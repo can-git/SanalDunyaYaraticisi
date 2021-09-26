@@ -3631,6 +3631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColorSetter
       objectReference: {fileID: 0}
+    - target: {fileID: 4497202209944274177, guid: 0a36168efdefba84e9737e6a39c6aae6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4497202209944274179, guid: 0a36168efdefba84e9737e6a39c6aae6, type: 3}
       propertyPath: vehicle
       value: 
@@ -115702,8 +115706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - car: {fileID: 4872175518307278590, guid: 7f460b5f84e86c3419599ce8546a84ed, type: 3}
-    speed: 4
+  - car: {fileID: 4819585454187948643, guid: df012c60f3344414da02fc41a5d674f1, type: 3}
+    speed: 5
   secondsBetweenSpawn: 0
 --- !u!114 &1112126784
 MonoBehaviour:
@@ -115737,7 +115741,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 270
       flipNormals: 1
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.6
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1

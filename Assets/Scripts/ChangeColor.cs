@@ -48,4 +48,8 @@ public class ChangeColor : MonoBehaviour
     {
         return colorID;
     }
+    public int getTypeID()
+    {
+        return carTypeID;
+    }
 }
