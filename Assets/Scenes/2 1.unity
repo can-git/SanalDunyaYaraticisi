@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &133813980
 Transform:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - car: {fileID: 4872175518307278590, guid: 7f460b5f84e86c3419599ce8546a84ed, type: 3}
+  - car: {fileID: 4696034168216049868, guid: 30775b7801ff4d2458a44a3bcf2457c3, type: 3}
     speed: 4
   secondsBetweenSpawn: 0
 --- !u!114 &133813982
@@ -114730,7 +114730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &930032394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115692,7 +115692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1112126783
 MonoBehaviour:
   m_ObjectHideFlags: 0
