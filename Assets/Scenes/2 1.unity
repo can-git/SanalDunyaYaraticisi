@@ -317,7 +317,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 270
       flipNormals: 1
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 3
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1
@@ -114730,7 +114730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &930032394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115692,7 +115692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1112126783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115741,7 +115741,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 270
       flipNormals: 1
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.6
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1
