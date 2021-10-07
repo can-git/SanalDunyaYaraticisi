@@ -9,6 +9,11 @@ public class DroneMovement : MonoBehaviour
     public float speed = 5;
     float distanceTravalled;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
+
     void Start()
     {
         pathCreator = this.transform.parent.gameObject.GetComponent<PathCreator>();
