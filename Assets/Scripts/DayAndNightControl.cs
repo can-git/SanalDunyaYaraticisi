@@ -141,14 +141,14 @@ public class DayAndNightControl : MonoBehaviour {
 		return dayState;
 	}
 
-	void OnGUI()
-	{
-		//debug GUI on screen visuals
-		if (showUI) {
-			GUILayout.Box ("Day: " + currentDay);
-			GUILayout.Box (TimeOfDay ());
-			GUILayout.Box ("Time slider");
-			GUILayout.VerticalSlider (currentTime, 0f, 1f);
-		}
-	}
+	//void OnGUI()
+	//{
+	//	//debug GUI on screen visuals
+	//	if (showUI) {
+	//		GUILayout.Box ("Day: " + currentDay);
+	//		GUILayout.Box (TimeOfDay ());
+	//		GUILayout.Box ("Time slider");
+	//		GUILayout.VerticalSlider (currentTime, 0f, 1f);
+	//	}
+	//}
 }
