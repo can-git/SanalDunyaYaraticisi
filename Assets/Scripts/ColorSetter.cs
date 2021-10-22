@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ColorSetter : MonoBehaviour
 {
-    [SerializeField] public Material outlineMask;
-    [SerializeField] public Material outlineFill;
-
     private ArrayList colorIDsBus;
     private ArrayList colorIDsCar;
     private ArrayList colorIDsLorry;
@@ -28,22 +25,22 @@ public class ColorSetter : MonoBehaviour
         switch (carType)
         {
             case "Bus":
-                index = 0;
-                break;
-            case "Car":
                 index = 1;
                 break;
-            case "Lorry":
+            case "Car":
                 index = 2;
                 break;
-            case "Truck":
+            case "Lorry":
                 index = 3;
                 break;
-            case "Van":
+            case "Truck":
                 index = 4;
                 break;
-            default:
+            case "Van":
                 index = 5;
+                break;
+            default:
+                index = 6;
                 break;
         }
         return index;
@@ -51,12 +48,12 @@ public class ColorSetter : MonoBehaviour
 
     public int newColorID(string carType)
     {
-        int index=255;
+        int index=1;
         switch (carType)
         {
             case "Bus":
-                index = 255;
-                while (index > 0)
+                index = 1;
+                while (index < 255)
                 {
                     if (!colorIDsBus.Contains(index))
                     {
@@ -65,13 +62,13 @@ public class ColorSetter : MonoBehaviour
                     }
                     else
                     {
-                        index--;
+                        index++;
                     }
                 }
                 break;
             case "Car":
-                index = 255;
-                while (index > 0)
+                index = 1;
+                while (index < 255)
                 {
                     if (!colorIDsCar.Contains(index))
                     {
@@ -80,13 +77,13 @@ public class ColorSetter : MonoBehaviour
                     }
                     else
                     {
-                        index--;
+                        index++;
                     }
                 }
                 break;
             case "Lorry":
-                index = 255;
-                while (index > 0)
+                index = 1;
+                while (index < 255)
                 {
                     if (!colorIDsLorry.Contains(index))
                     {
@@ -95,13 +92,13 @@ public class ColorSetter : MonoBehaviour
                     }
                     else
                     {
-                        index--;
+                        index++;
                     }
                 }
                 break;
             case "Truck":
-                index = 255;
-                while (index > 0)
+                index = 1;
+                while (index < 255)
                 {
                     if (!colorIDsTruck.Contains(index))
                     {
@@ -110,13 +107,13 @@ public class ColorSetter : MonoBehaviour
                     }
                     else
                     {
-                        index--;
+                        index++;
                     }
                 }
                 break;
             case "Van":
-                index = 255;
-                while (index > 0)
+                index = 1;
+                while (index < 255)
                 {
                     if (!colorIDsVan.Contains(index))
                     {
@@ -125,7 +122,7 @@ public class ColorSetter : MonoBehaviour
                     }
                     else
                     {
-                        index--;
+                        index++;
                     }
                 }
                 break;

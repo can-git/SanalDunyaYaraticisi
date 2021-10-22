@@ -42,10 +42,10 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.99503064, g: 1, b: 0.8726415, a: 1}
-  m_Intensity: 9.47
-  m_Range: 13.7
-  m_SpotAngle: 47.24
+  m_Color: {r: 0.9931507, g: 1, b: 0.75, a: 1}
+  m_Intensity: 8.5
+  m_Range: 16
+  m_SpotAngle: 38
   m_InnerSpotAngle: 15
   m_CookieSize: 10
   m_Shadows:
@@ -604,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5317410621463290635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0, z: -0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4171230670976926944}
@@ -654,10 +654,10 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.99503064, g: 1, b: 0.8726415, a: 1}
-  m_Intensity: 9.47
-  m_Range: 13.7
-  m_SpotAngle: 47.24
+  m_Color: {r: 0.9931507, g: 1, b: 0.75, a: 1}
+  m_Intensity: 8.5
+  m_Range: 16
+  m_SpotAngle: 38
   m_InnerSpotAngle: 15
   m_CookieSize: 10
   m_Shadows:
@@ -749,7 +749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a852b9576764a41bee4833ff713f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayController: {fileID: 0}
 --- !u!1 &9088618925672612819
 GameObject:
   m_ObjectHideFlags: 0
