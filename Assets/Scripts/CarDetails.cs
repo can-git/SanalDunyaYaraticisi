@@ -11,11 +11,9 @@ public class CarDetails : MonoBehaviour
     public JsonVehicleDatas getCarDetails()
     {
         _jsonvehicle = new JsonVehicleDatas();
-
         _jsonvehicle.ID = gameObject.GetComponent<ChangeColor>().getColorID();
         _jsonvehicle.TYPE = gameObject.GetComponent<ChangeColor>().getTypeID();
         _jsonvehicle.VectorDetails = getMotionTDatas();
-
         return _jsonvehicle;
     }
     public List<JsonVehicleMotionDatas> getMotionDatas()
@@ -36,8 +34,12 @@ public class CarDetails : MonoBehaviour
     }
     public List<JsonVehicleMotionTDatas> getMotionTDatas()
     {
-        MeshFilter filter = GetComponentInChildren<MeshFilter>();
 
+        Debug.Log("2 " + Time.realtimeSinceStartup);
+        MeshFilter filter = GetComponentInChildren<MeshFilter>();
+        Debug.Log(filter.mesh.GetTriangles(1).Length);
+        Debug.Log(filter.mesh.triangles.Length);
+        Debug.Log(filter.mesh.vertices.Length);
         List<JsonVehicleMotionTDatas> motionTList = new List<JsonVehicleMotionTDatas>();
         int num = 0;
 
@@ -53,15 +55,25 @@ public class CarDetails : MonoBehaviour
 
             motionTDatas.TriangleID = num;
             num++;
-            triangleDatas.v0 = new Vector3(Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]])).x, Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]])).y), Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]])).z);
-            triangleDatas.v1 = new Vector3(Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]])).x, Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]])).y), Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]])).z);
-            triangleDatas.v2 = new Vector3(Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]])).x, Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]])).y), Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]])).z);
-            //Debug.Log(triangleDatas.v0);
-            //Debug.Log(new Vector3(Camera.main.WorldToScreenPoint(transform.GetChild(0).transform.position + triangleDatas.v0).x, Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).transform.position + triangleDatas.v0).y), Camera.main.WorldToScreenPoint(transform.GetChild(0).transform.position + triangleDatas.v0).z));
+            triangleDatas.v0 = new Vector2(
+                Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]])).x,
+                Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]])).y));
+            //Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]])).z);
 
+            triangleDatas.v1 = new Vector2(
+                Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]])).x,
+                Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]])).y));
+                //Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]])).z);
+
+            triangleDatas.v2 = new Vector2(
+                Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]])).x,
+                Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]])).y));
+                //Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]])).z);
+           
             motionTDatas.TriangleDetails = triangleDatas;
             motionTList.Add(motionTDatas);
         }
+        
         return motionTList;
     }
 }
@@ -83,9 +95,9 @@ public class JsonVehicleMotionDatas
 [System.Serializable]
 public class JsonVehicleTDatas
 {
-    public Vector3 v0;
-    public Vector3 v1;
-    public Vector3 v2;
+    public Vector2 v0;
+    public Vector2 v1;
+    public Vector2 v2;
 }
 [System.Serializable]
 public class JsonVehicleMotionTDatas

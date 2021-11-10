@@ -3390,6 +3390,11 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!4 &2093754083 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4672211980220679636, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+  m_PrefabInstance: {fileID: 4482031957504912050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2096192236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3471,6 +3476,109 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+--- !u!1 &2121865062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2121865063}
+  - component: {fileID: 2121865065}
+  - component: {fileID: 2121865064}
+  m_Layer: 0
+  m_Name: Path6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2121865063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121865062}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -84.9, y: 4.08, z: -161.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2093754083}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &2121865064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121865062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09f66a392ec7f241b60b7c0cb1df6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cars:
+  - car: {fileID: 7807327904118516631, guid: 4f4c0cd0249cc38499cd910c96198f88, type: 3}
+    speed: 4
+  secondsBetweenSpawn: 0
+--- !u!114 &2121865065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121865062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: 0, y: 0, z: 0}
+      - {x: -13.153801, y: 0, z: -0.8065044}
+      - {x: -13.547533, y: 0, z: 18.660429}
+      - {x: -1.6508806, y: 0, z: 18.82042}
+      - {x: 10.245771, y: 0, z: 18.98041}
+      - {x: 13.153801, y: 0, z: 0.8065044}
+      isClosed: 1
+      space: 0
+      controlMode: 1
+      autoControlLength: 0.3
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: -1.463314, y: 0, z: 10.635178}
+        m_Extent: {x: 8.125535, y: 0, z: 10.707306}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      globalNormalsAngle: 90
+      flipNormals: 0
+    vertexPathUpToDate: 0
+    vertexPathMaxAngleError: 0
+    vertexPathMinVertexSpacing: 0
+    showTransformTool: 1
+    showPathBounds: 1
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 6.93
+    globalDisplaySettingsFoldout: 1
+    keepConstantHandleSize: 0
+    showNormalsInVertexMode: 1
+    showBezierPathInVertexMode: 1
+    showDisplayOptions: 1
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 1
+    showVertexPathOptions: 1
+    showNormals: 1
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
 --- !u!1 &2142744955
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,9 +3803,57 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1650870204127441763, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1866024219728754687, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1866024220949295755, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1999187255376428776, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
       propertyPath: m_Name
       value: 0100Package
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025154031652521126, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482031957925612090, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482031957946559249, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482031958425075162, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483271230942134852, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4672211979971829786, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736650401741168330, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234186442157065402, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270260809087246530, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8573785468411092088, guid: 42db3ee54d3e2a645890924245ddbfc8, type: 3}
       propertyPath: m_LocalPosition.x
