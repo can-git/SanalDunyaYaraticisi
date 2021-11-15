@@ -53,6 +53,7 @@ public class JsonThings : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        Debug.Log(Application.dataPath + "/VehiclesJsonData" + ".json");
         File.WriteAllText(Application.dataPath + "/VehiclesJsonData" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
     }
 }
