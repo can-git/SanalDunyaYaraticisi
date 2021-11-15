@@ -7,7 +7,7 @@
 /[Mm]emoryCaptures/
 /[Rr]ecordings/
 /EditedFBXs/
-/[Aa]ssets/[Tt]errains/
+#/[Aa]ssets/[Tt]errains/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

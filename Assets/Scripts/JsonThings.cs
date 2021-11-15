@@ -36,7 +36,7 @@ public class JsonThings : MonoBehaviour
     {
         jsonData = new JsonDatas();
         jsonData.Frame = num;
-        jsonData.CameraVector = gameObject.transform.GetComponent<Velocity>().getVelocity();
+        //jsonData.CameraVector = gameObject.transform.GetComponent<Velocity>().getVelocity();
         jsonData.Vehicles = getCarDatas();
         genelList.Add(jsonData);
     }
@@ -46,11 +46,6 @@ public class JsonThings : MonoBehaviour
         list = new List<JsonVehicleDatas>();
         foreach (var item in FindObjectsOfType<CarDetails>())
         {
-            //Debug.Log(item.getMotionDatas().Count);
-            //if (item.getMotionDatas().Count > 0)
-            //{
-            //    list.Add(item.getCarDetails());
-            //}
             list.Add(item.getCarDetails());
         }
         return list;
@@ -58,6 +53,7 @@ public class JsonThings : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        Debug.Log(Application.dataPath + "/VehiclesJsonData" + ".json");
         File.WriteAllText(Application.dataPath + "/VehiclesJsonData" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
     }
 }
@@ -66,6 +62,6 @@ public class JsonThings : MonoBehaviour
 public class JsonDatas
 {
     public int Frame;
-    public Vector3 CameraVector;
+    //public Vector3 CameraVector;
     public List<JsonVehicleDatas> Vehicles;
 }
