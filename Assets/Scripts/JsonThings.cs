@@ -4,9 +4,14 @@ using Newtonsoft.Json;
 using System.IO;
 using UnityEditor.Recorder;
 using UnityEditor.Recorder.Input;
+using UnityEngine.SceneManagement;
+using System;
 
 public class JsonThings : MonoBehaviour
 {
+    bool isMask = false;
+    string currentFolderName = "Images";
+
     List<JsonVehicleDatas> list;
     List<JsonDatas> genelList;
     JsonDatas jsonData;
@@ -16,8 +21,8 @@ public class JsonThings : MonoBehaviour
     private RecorderController TestRecorderController;
 
     [Header("Recording Config")]
-    public string scene_name = "aa3";
-    public string path = "D:\\Dosyalar\\Bi_alametler\\Dataset\\Recordings\\Datasets\\";
+    string scene_name = "NONAME";
+    public string database = "D://Dosyalar//Bi_alametler//Dataset//Recordings//Datasets";
     public int frameRate = 30;
     public int Width = 1920;
     public int Height = 1080;
@@ -28,17 +33,26 @@ public class JsonThings : MonoBehaviour
 
     private void Awake()
     {
-        genelList = new List<JsonDatas>();
+        scene_name = SceneManager.GetActiveScene().name;
+        if (scene_name.Substring(scene_name.Length - 1) == "T")
+        {
+            isMask = true;
+            scene_name = scene_name.Substring(0, scene_name.Length - 1);
+            currentFolderName = "Masks";
+            genelList = new List<JsonDatas>();
+        }
         controllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();
         TestRecorderController = new RecorderController(controllerSettings);
         StartRecorder();
+        createFolders();
     }
+
+
 
     private void Update()
     {
         if (isLoaded)
         {
-            print(num);
             if (num == frameEnd)
             {
                 StopRecorder();
@@ -56,11 +70,14 @@ public class JsonThings : MonoBehaviour
 
     public void WriteJson()
     {
-        jsonData = new JsonDatas();
-        jsonData.Frame = num;
-        //jsonData.CameraVector = gameObject.transform.GetComponent<Velocity>().getVelocity();
-        jsonData.Vehicles = getCarDatas();
-        genelList.Add(jsonData);
+        if (isMask)
+        {
+            jsonData = new JsonDatas();
+            jsonData.Frame = num;
+            //jsonData.CameraVector = gameObject.transform.GetComponent<Velocity>().getVelocity();
+            jsonData.Vehicles = getCarDatas();
+            genelList.Add(jsonData);
+        }
     }
 
     public List<JsonVehicleDatas> getCarDatas()
@@ -73,6 +90,13 @@ public class JsonThings : MonoBehaviour
         return list;
     }
 
+    private void createFolders()
+    {
+        string path = Path.Combine(database, scene_name);
+        Directory.CreateDirectory(path);
+        Directory.CreateDirectory(Path.Combine(path, "Images"));
+        Directory.CreateDirectory(Path.Combine(path, "Masks"));
+    }
 
     void StartRecorder()
     {
@@ -82,7 +106,7 @@ public class JsonThings : MonoBehaviour
         imageRecorder.CaptureAlpha = false;
         imageRecorder.RecordMode = RecordMode.SingleFrame;
         imageRecorder.OutputFormat = ImageRecorderSettings.ImageRecorderOutputFormat.PNG;
-        imageRecorder.OutputFile = path + scene_name + "\\Masks\\<Frame>";
+        imageRecorder.OutputFile = Path.Combine(database, scene_name) + "\\" + currentFolderName + "\\<Frame>";
 
         imageRecorder.imageInputSettings = new CameraInputSettings
         {
@@ -107,7 +131,10 @@ public class JsonThings : MonoBehaviour
     void StopRecorder()
     {
         TestRecorderController.StopRecording();
-        File.WriteAllText("D:/Dosyalar/Bi_alametler/Dataset/Recordings/Datasets/" + scene_name + "/VehiclesJsonData" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
+        if (isMask)
+        {
+            File.WriteAllText(Path.Combine(database, scene_name) + "\\VehiclesJsonData" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
+        }
         UnityEditor.EditorApplication.isPlaying = false;
         Debug.Log("Recording is Finished");
         Application.Quit();
