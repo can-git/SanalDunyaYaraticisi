@@ -34,12 +34,7 @@ public class CarDetails : MonoBehaviour
     }
     public List<JsonVehicleMotionTDatas> getMotionTDatas()
     {
-
-        Debug.Log("2 " + Time.realtimeSinceStartup);
         MeshFilter filter = GetComponentInChildren<MeshFilter>();
-        Debug.Log(filter.mesh.GetTriangles(1).Length);
-        Debug.Log(filter.mesh.triangles.Length);
-        Debug.Log(filter.mesh.vertices.Length);
         List<JsonVehicleMotionTDatas> motionTList = new List<JsonVehicleMotionTDatas>();
         int num = 0;
 
