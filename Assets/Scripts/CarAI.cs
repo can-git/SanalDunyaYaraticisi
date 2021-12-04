@@ -10,11 +10,28 @@ public class CarAI : MonoBehaviour
     PathCreator pathCreator;
     float speed = 5;
     float distanceTravalled;
+    bool isNormal;
+
+    private void Awake()
+    {
+        isNormal = GameObject.Find("Config").GetComponent<JsonThings>().isSceneNormal;
+    }
 
     void Start()
     {
+        if (isNormal)
+        {
+            Destroy(GetComponent<CarDetails>());
+            Destroy(GetComponent<ChangeColor>());
+        }
+        else
+        {
+            Destroy(GetComponent<Transform>().GetChild(1).gameObject);
+        }
+
         if (transform.parent)
             pathCreator = this.transform.parent.gameObject.GetComponent<PathCreator>();
+
     }
 
     private void Update()

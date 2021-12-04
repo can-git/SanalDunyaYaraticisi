@@ -16,33 +16,44 @@ public class ChangeColor : MonoBehaviour
     Color color4Default;
     Color color4Outline;
 
-    void Awake()
-    {
-
-        renderers = GetComponentsInChildren<Renderer>();
-        filters = GetComponentsInChildren<MeshFilter>();
-        carType = gameObject.tag;
-
-        if (carType == null)
-            carType = "Car";
-
-        carTypeID = FindObjectOfType<ColorSetter>().newCarTypeID(carType);
-        colorID = FindObjectOfType<ColorSetter>().newColorID(carType);
-
-        color4Default = new Color32(0, (byte)carTypeID, (byte)colorID, 255);
-        color4Outline = new Color32(1, (byte)carTypeID, (byte)colorID, 255);
-    }
+    public Material material;
 
     void Start()
     {
-        foreach (var renderer in renderers)
+        if (!GameObject.Find("Config").GetComponent<JsonThings>().isSceneNormal)
         {
-            foreach (var item in renderer.materials)
+            renderers = GetComponentsInChildren<Renderer>();
+            carType = gameObject.tag;
+
+            foreach (Renderer rend in renderers)
             {
-                item.SetColor("_Color", color4Default);
-                item.SetColor("_OutlineColor", color4Outline);
+                var mats = new Material[rend.materials.Length];
+                for (int i = 0; i < rend.materials.Length; i++)
+                {
+                    mats[i] = material;
+                }
+                rend.materials = mats;
+            }
+
+            if (carType == null)
+                carType = "Car";
+
+            carTypeID = FindObjectOfType<ColorSetter>().newCarTypeID(carType);
+            colorID = FindObjectOfType<ColorSetter>().newColorID(carType);
+
+            color4Default = new Color32(0, (byte)carTypeID, (byte)colorID, 255);
+            color4Outline = new Color32(1, (byte)carTypeID, (byte)colorID, 255);
+
+            foreach (var renderer in renderers)
+            {
+                foreach (var item in renderer.materials)
+                {
+                    item.SetColor("_Color", color4Default);
+                    item.SetColor("_OutlineColor", color4Outline);
+                }
             }
         }
+        
     }
     public int getColorID()
     {

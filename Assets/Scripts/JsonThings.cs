@@ -10,8 +10,8 @@ using System.Collections;
 
 public class JsonThings : MonoBehaviour
 {
-    bool isMask = false;
-    string currentFolderName = "Images";
+    public bool isSceneNormal = true;
+    string currentFolderName;
 
     List<JsonVehicleDatas> list;
     List<JsonDatas> genelList;
@@ -23,7 +23,7 @@ public class JsonThings : MonoBehaviour
     private RecorderController TestRecorderController;
 
     [Header("Recording Config")]
-    string scene_name = "000";
+    string scene_name;
     public string database = "D://Dosyalar//Bi_alametler//Dataset//Recordings//Datasets";
     public int frameRate = 30;
     public int Width = 1920;
@@ -36,12 +36,17 @@ public class JsonThings : MonoBehaviour
     private void Awake()
     {
         scene_name = SceneManager.GetActiveScene().name;
-        if (scene_name.Substring(scene_name.Length - 1) == "T")
+        if (!isSceneNormal)
         {
-            isMask = true;
-            scene_name = scene_name.Substring(0, scene_name.Length - 1);
+            Destroy(GameObject.Find("Day and Night Controller"));
+            Destroy(GameObject.Find("Lights Controller"));
             currentFolderName = "Masks";
             genelList = new List<JsonDatas>();
+        }
+        else
+        {
+            Destroy(GetComponent<ColorSetter>());
+            currentFolderName = "Images";
         }
         controllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();
         TestRecorderController = new RecorderController(controllerSettings);
@@ -50,6 +55,7 @@ public class JsonThings : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Record is started");
         StartCoroutine(Wait());
     }
 
@@ -74,15 +80,9 @@ public class JsonThings : MonoBehaviour
         isLoaded = true;
     }
 
-    //private void OnGUI()
-    //{
-    //    if (!isLoaded)
-    //        isLoaded = true;
-    //}
-
     public void WriteJson()
     {
-        if (isMask)
+        if (!isSceneNormal)
         {
             jsonData = new JsonDatas();
             jsonData.Frame = num;
@@ -143,12 +143,12 @@ public class JsonThings : MonoBehaviour
     void StopRecorder()
     {
         TestRecorderController.StopRecording();
-        if (isMask)
+        if (!isSceneNormal)
         {
             File.WriteAllText(Path.Combine(database, scene_name) + "\\Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
         }
         UnityEditor.EditorApplication.isPlaying = false;
-        Debug.Log("Recording is Finished");
+        Debug.Log("Finished");
         Application.Quit();
     }
 }

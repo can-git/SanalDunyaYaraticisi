@@ -10,6 +10,25 @@ public class ColorSetter : MonoBehaviour
     private ArrayList colorIDsTruck;
     private ArrayList colorIDsVan;
 
+    public GameObject city;
+    public Material material;
+
+    void Start()
+    {
+        foreach (Renderer rend in city.GetComponentsInChildren<Renderer>())
+        {
+            if (rend)
+            {
+                Material[] mats = new Material[rend.materials.Length];
+                for (int i = 0; i < rend.materials.Length; i++)
+                {
+                    mats[i] = material;
+                }
+                rend.materials = mats;
+            }
+        }
+    }
+
     private void OnValidate()
     {
         colorIDsBus = new ArrayList();
