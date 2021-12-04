@@ -6,6 +6,7 @@ using UnityEditor.Recorder;
 using UnityEditor.Recorder.Input;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections;
 
 public class JsonThings : MonoBehaviour
 {
@@ -17,11 +18,12 @@ public class JsonThings : MonoBehaviour
     JsonDatas jsonData;
     int num = 0;
     bool isLoaded = false;
+    public float waitForSeconds = 0;
     private RecorderControllerSettings controllerSettings;
     private RecorderController TestRecorderController;
 
     [Header("Recording Config")]
-    string scene_name = "NONAME";
+    string scene_name = "000";
     public string database = "D://Dosyalar//Bi_alametler//Dataset//Recordings//Datasets";
     public int frameRate = 30;
     public int Width = 1920;
@@ -43,10 +45,13 @@ public class JsonThings : MonoBehaviour
         }
         controllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();
         TestRecorderController = new RecorderController(controllerSettings);
-        StartRecorder();
-        createFolders();
+        
     }
 
+    private void Start()
+    {
+        StartCoroutine(Wait());
+    }
 
 
     private void Update()
@@ -61,12 +66,19 @@ public class JsonThings : MonoBehaviour
             num++;
         }
     }
-
-    private void OnGUI()
+    IEnumerator Wait()
     {
-        if (!isLoaded)
-            isLoaded = true;
+        yield return new WaitForSeconds(waitForSeconds);
+        StartRecorder();
+        createFolders();
+        isLoaded = true;
     }
+
+    //private void OnGUI()
+    //{
+    //    if (!isLoaded)
+    //        isLoaded = true;
+    //}
 
     public void WriteJson()
     {
@@ -133,7 +145,7 @@ public class JsonThings : MonoBehaviour
         TestRecorderController.StopRecording();
         if (isMask)
         {
-            File.WriteAllText(Path.Combine(database, scene_name) + "\\VehiclesJsonData" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
+            File.WriteAllText(Path.Combine(database, scene_name) + "\\Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
         }
         UnityEditor.EditorApplication.isPlaying = false;
         Debug.Log("Recording is Finished");
