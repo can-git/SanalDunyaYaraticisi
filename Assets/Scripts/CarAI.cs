@@ -42,9 +42,8 @@ public class CarAI : MonoBehaviour
             transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravalled);
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravalled);
         }
-
     }
-
+   
     public void setSpeed(int speed)
     {
         this.speed = speed;

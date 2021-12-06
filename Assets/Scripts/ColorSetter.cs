@@ -37,116 +37,116 @@ public class ColorSetter : MonoBehaviour
         colorIDsTruck = new ArrayList();
         colorIDsVan = new ArrayList();
     }
-
+    
     public int newCarTypeID(string carType)
     {
         int index;
         switch (carType)
         {
             case "Bus":
-                index = 1;
-                break;
+            index = 1;
+            break;
             case "Car":
-                index = 2;
-                break;
+            index = 2;
+            break;
             case "Lorry":
-                index = 3;
-                break;
+            index = 3;
+            break;
             case "Truck":
-                index = 4;
-                break;
+            index = 4;
+            break;
             case "Van":
-                index = 5;
-                break;
+            index = 5;
+            break;
             default:
-                index = 6;
-                break;
+            index = 6;
+            break;
         }
         return index;
     }
 
     public int newColorID(string carType)
     {
-        int index=1;
+        int index = 1;
         switch (carType)
         {
             case "Bus":
-                index = 1;
-                while (index < 255)
+            index = 1;
+            while (index < 255)
+            {
+                if (!colorIDsBus.Contains(index))
                 {
-                    if (!colorIDsBus.Contains(index))
-                    {
-                        colorIDsBus.Add(index);
-                        break;
-                    }
-                    else
-                    {
-                        index++;
-                    }
+                    colorIDsBus.Add(index);
+                    break;
                 }
-                break;
+                else
+                {
+                    index++;
+                }
+            }
+            break;
             case "Car":
-                index = 1;
-                while (index < 255)
+            index = 1;
+            while (index < 255)
+            {
+                if (!colorIDsCar.Contains(index))
                 {
-                    if (!colorIDsCar.Contains(index))
-                    {
-                        colorIDsCar.Add(index);
-                        break;
-                    }
-                    else
-                    {
-                        index++;
-                    }
+                    colorIDsCar.Add(index);
+                    break;
                 }
-                break;
+                else
+                {
+                    index++;
+                }
+            }
+            break;
             case "Lorry":
-                index = 1;
-                while (index < 255)
+            index = 1;
+            while (index < 255)
+            {
+                if (!colorIDsLorry.Contains(index))
                 {
-                    if (!colorIDsLorry.Contains(index))
-                    {
-                        colorIDsLorry.Add(index);
-                        break;
-                    }
-                    else
-                    {
-                        index++;
-                    }
+                    colorIDsLorry.Add(index);
+                    break;
                 }
-                break;
+                else
+                {
+                    index++;
+                }
+            }
+            break;
             case "Truck":
-                index = 1;
-                while (index < 255)
+            index = 1;
+            while (index < 255)
+            {
+                if (!colorIDsTruck.Contains(index))
                 {
-                    if (!colorIDsTruck.Contains(index))
-                    {
-                        colorIDsTruck.Add(index);
-                        break;
-                    }
-                    else
-                    {
-                        index++;
-                    }
+                    colorIDsTruck.Add(index);
+                    break;
                 }
-                break;
+                else
+                {
+                    index++;
+                }
+            }
+            break;
             case "Van":
-                index = 1;
-                while (index < 255)
+            index = 1;
+            while (index < 255)
+            {
+                if (!colorIDsVan.Contains(index))
                 {
-                    if (!colorIDsVan.Contains(index))
-                    {
-                        colorIDsVan.Add(index);
-                        break;
-                    }
-                    else
-                    {
-                        index++;
-                    }
+                    colorIDsVan.Add(index);
+                    break;
                 }
-                break;
+                else
+                {
+                    index++;
+                }
+            }
+            break;
             default:
-                break;
+            break;
         }
         return index;
     }

@@ -42,6 +42,7 @@ public class JsonThings : MonoBehaviour
             Destroy(GameObject.Find("Lights Controller"));
             currentFolderName = "Masks";
             genelList = new List<JsonDatas>();
+            num = frameStart;
         }
         else
         {
@@ -50,15 +51,14 @@ public class JsonThings : MonoBehaviour
         }
         controllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();
         TestRecorderController = new RecorderController(controllerSettings);
-        
-    }
 
+    }
     private void Start()
     {
-        Debug.Log("Record is started");
+        createFolders();
+
         StartCoroutine(Wait());
     }
-
 
     private void Update()
     {
@@ -75,8 +75,9 @@ public class JsonThings : MonoBehaviour
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(waitForSeconds);
+
         StartRecorder();
-        createFolders();
+
         isLoaded = true;
     }
 
@@ -138,6 +139,7 @@ public class JsonThings : MonoBehaviour
         RecorderOptions.VerboseMode = false;
         TestRecorderController.PrepareRecording();
         TestRecorderController.StartRecording();
+        Debug.Log("Record is started");
     }
 
     void StopRecorder()
