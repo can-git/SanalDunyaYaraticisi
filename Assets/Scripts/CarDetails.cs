@@ -8,6 +8,8 @@ public class CarDetails : MonoBehaviour
 {
     JsonVehicleDatas _jsonvehicle;
     JsonVehicleMotionDatas _jsonMotions;
+    Rect r;
+
 
     public JsonVehicleDatas getCarDetails()
     {
@@ -16,26 +18,86 @@ public class CarDetails : MonoBehaviour
         _jsonvehicle.TYPE = gameObject.GetComponent<ChangeColor>().getTypeID();
         _jsonvehicle.BboxDetails = getBboxDetails();
         _jsonvehicle.VectorDetails = getMotionTDatas();
+
         return _jsonvehicle;
     }
-
-    public List<JsonVehicleMotionDatas> getMotionDatas()
+    //public List<JsonVehicleMotionDatas> getMotionDatas()
+    //{
+    //    List<JsonVehicleMotionDatas> motionVectorList = new List<JsonVehicleMotionDatas>();
+    //    var velocityList = GetComponentsInChildren<Velocity>();
+    //    for (int i = 0; i < velocityList.Length; i++)
+    //    {
+    //        if (velocityList[i].IsInView())
+    //        {
+    //            _jsonMotions = new JsonVehicleMotionDatas();
+    //            _jsonMotions.Vector = velocityList[i].getVelocity();
+    //            _jsonMotions.Position = new Vector2(Camera.main.WorldToScreenPoint(velocityList[i].transform.position).x, (Screen.height - Camera.main.WorldToScreenPoint(velocityList[i].transform.position).y));
+    //            motionVectorList.Add(_jsonMotions);
+    //        }
+    //    }
+    //    return motionVectorList;
+    //}
+    public bool isInCamera()
     {
-        List<JsonVehicleMotionDatas> motionVectorList = new List<JsonVehicleMotionDatas>();
-        var velocityList = GetComponentsInChildren<Velocity>();
-        for (int i = 0; i < velocityList.Length; i++)
+        MeshFilter filter = GetComponentInChildren<MeshFilter>();
+        bool durum = false;
+        for (int i = 0; i < filter.sharedMesh.triangles.Length; i += 1)
         {
-            if (velocityList[i].IsInView())
+            Vector2 check;
+
+            check = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i]]));
+            if (check.x > 1920 || check.x < 0 || check.y < 0 || check.y > 1080)
             {
-                _jsonMotions = new JsonVehicleMotionDatas();
-                _jsonMotions.Vector = velocityList[i].getVelocity();
-                _jsonMotions.Position = new Vector2(Camera.main.WorldToScreenPoint(velocityList[i].transform.position).x, (Screen.height - Camera.main.WorldToScreenPoint(velocityList[i].transform.position).y));
-                motionVectorList.Add(_jsonMotions);
+                //Debug.Log(this.name);
+                //Debug.Log(check);
+                durum = false;
+            }
+            else
+            {
+                durum = true;
+                break;
             }
         }
-        return motionVectorList;
+        return durum;
     }
+    public bool ObjectInCamera()
+    {
+        Vector3[] bboxs3 = GetComponentInChildren<MeshFilter>().mesh.vertices;
+        List<Vector2> bboxs = new List<Vector2>();
+        foreach (Vector3 item in bboxs3)
+        {
+            bboxs.Add(WorldToGUIPoint(transform.TransformPoint(item)));
+        }
+        float x1 = float.MaxValue, y1 = float.MaxValue, x2 = 0.0f, y2 = 0.0f;
 
+        foreach (Vector2 temp in bboxs)
+        {
+            if (temp.x >= 0 && temp.x <= (float)Screen.width && temp.y >= 0 && temp.y <= (float)Screen.height)
+            {
+                if (temp.x < x1)
+                    x1 = temp.x;
+                if (temp.x > x2)
+                    x2 = temp.x;
+                if (temp.y < y1)
+                    y1 = temp.y;
+                if (temp.y > y2)
+                    y2 = temp.y;
+            }
+        }
+        float x = x1;
+        float y = y1;
+        float width = x2 - x1;
+        float height = y2 - y1;
+
+        if (x >= 0 && x <= (float)Screen.width && y >= 0 && y <= (float)Screen.height && width >= 20 && height >= 20)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public Rect GUI2dRectWithObject()
     {
         Vector3[] bboxs3 = GetComponentInChildren<MeshFilter>().mesh.vertices;
@@ -65,11 +127,14 @@ public class CarDetails : MonoBehaviour
         float width = x2 - x1;
         float height = y2 - y1;
 
-        if (x >= 0 && x<= (float)Screen.width && y >= 0 && y<= (float)Screen.height && width >=20 && height >= 20)
+        if (x >= 0 && x <= (float)Screen.width && y >= 0 && y <= (float)Screen.height && width >= 20 && height >= 20)
+        {
             return new Rect(x, y, width, height);
+        }
         else
-            return new Rect(-1,-1,-1,-1);
-         
+        {
+            return new Rect(-1, -1, -1, -1);
+        }
     }
     public Vector2 WorldToGUIPoint(Vector3 world)
     {
@@ -89,46 +154,53 @@ public class CarDetails : MonoBehaviour
     //}
     public JsonVehicleBbox getBboxDetails()
     {
+
         JsonVehicleBbox bbox = new JsonVehicleBbox();
         Rect r = GUI2dRectWithObject();
         bbox.x = Mathf.RoundToInt(r.x);
         bbox.y = Mathf.RoundToInt(r.y);
         bbox.width = Mathf.RoundToInt(r.width);
         bbox.height = Mathf.RoundToInt(r.height);
+
         return bbox;
     }
 
     public List<JsonVehicleMotionTDatas> getMotionTDatas()
     {
         MeshFilter filter = GetComponentInChildren<MeshFilter>();
+
         List<JsonVehicleMotionTDatas> motionTList = new List<JsonVehicleMotionTDatas>();
-
         int num = 0;
-        for (int i = 0; i < filter.sharedMesh.triangles.Length; i += 3)
+
+        if (isInCamera())
         {
-            JsonVehicleMotionTDatas motionTDatas = new JsonVehicleMotionTDatas();
-            JsonVehicleTDatas triangleDatas = new JsonVehicleTDatas();
+            for (int i = 0; i < filter.sharedMesh.triangles.Length; i += 3)
+            {
+                JsonVehicleMotionTDatas motionTDatas = new JsonVehicleMotionTDatas();
+                JsonVehicleTDatas triangleDatas = new JsonVehicleTDatas();
 
-            motionTDatas.TriangleID = num;
-            num++;
-            triangleDatas.v0 = new Vector2(
-                getCorrectList(Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]])).x, true),
-                getCorrectList(Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]])).y), false));
+                motionTDatas.TriangleID = num;
+                num++;
 
-            triangleDatas.v1 = new Vector2(
-                getCorrectList(Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]])).x, true),
-                getCorrectList(Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]])).y), false));
+                triangleDatas.v0 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]]));
 
-            triangleDatas.v2 = new Vector2(
-                getCorrectList(Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]])).x, true),
-                getCorrectList(Screen.height - (Camera.main.WorldToScreenPoint(transform.GetChild(0).TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]])).y), false));
+                triangleDatas.v1 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]]));
 
-            motionTDatas.TriangleDetails = triangleDatas;
-            motionTList.Add(motionTDatas);
+                triangleDatas.v2 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]]));
+
+                motionTDatas.TriangleDetails = triangleDatas;
+                motionTList.Add(motionTDatas);
+
+            }
         }
-        
 
         return motionTList;
+    }
+    public Vector2 World2ScreenPoint(Vector3 world)
+    {
+        Vector2 screenPoint = Camera.main.WorldToScreenPoint(world);
+        screenPoint.y = (float)Screen.height - screenPoint.y;
+        return screenPoint;
     }
     float getCorrectList(float value, bool isX)
     {

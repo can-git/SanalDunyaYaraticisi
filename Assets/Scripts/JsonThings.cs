@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 
+
 public class JsonThings : MonoBehaviour
 {
     public bool isSceneNormal = true;
@@ -26,10 +27,11 @@ public class JsonThings : MonoBehaviour
     string scene_name;
     public string database = "D://Dosyalar//Bi_alametler//Dataset//Recordings//Datasets";
     public int frameRate = 30;
-    public int Width = 1920;
-    public int Height = 1080;
+    public Vector2Int ScreenSize;
     public int frameStart = 0;
     public int frameEnd = 5;
+
+    public Camera camera;
 
 
 
@@ -42,7 +44,6 @@ public class JsonThings : MonoBehaviour
             Destroy(GameObject.Find("Lights Controller"));
             currentFolderName = "Masks";
             genelList = new List<JsonDatas>();
-            num = frameStart;
         }
         else
         {
@@ -56,32 +57,39 @@ public class JsonThings : MonoBehaviour
     private void Start()
     {
         createFolders();
-
-        StartCoroutine(Wait());
+        StartRecorder();
+        Debug.Log("Record Started.");
+        //isLoaded = true;
     }
 
     private void Update()
     {
-        if (isLoaded)
-        {
-            if (num == frameEnd)
-            {
-                StopRecorder();
-            }
-            WriteJson();
-            num++;
-        }
+        //if(isLoaded)
+        CallItEveryTime();
     }
-    IEnumerator Wait()
+
+    private void CallItEveryTime()
+    {
+        if (num >= frameStart && num < frameEnd - 1)
+        {
+            Process();
+        }
+        else if (num == frameEnd)
+        {
+            //Process();
+            End();
+        }
+        num++;
+    }
+
+    IEnumerator StartRecord()
     {
         yield return new WaitForSeconds(waitForSeconds);
-
         StartRecorder();
-
         isLoaded = true;
     }
 
-    public void WriteJson()
+    public void Process()
     {
         if (!isSceneNormal)
         {
@@ -98,53 +106,53 @@ public class JsonThings : MonoBehaviour
         list = new List<JsonVehicleDatas>();
         foreach (var item in FindObjectsOfType<CarDetails>())
         {
-            list.Add(item.getCarDetails());
+            if (item.isInCamera())
+            {
+                list.Add(item.getCarDetails());
+                Debug.Log(num);
+            }
+
         }
         return list;
     }
 
     private void createFolders()
     {
-        string path = Path.Combine(database, scene_name);
-        Directory.CreateDirectory(path);
-        Directory.CreateDirectory(Path.Combine(path, "Images"));
-        Directory.CreateDirectory(Path.Combine(path, "Masks"));
+        Directory.CreateDirectory(Path.Combine(database, scene_name));
+        Directory.CreateDirectory(Path.Combine(database, scene_name, currentFolderName));
     }
 
     void StartRecorder()
     {
         var imageRecorder = ScriptableObject.CreateInstance<ImageRecorderSettings>();
-        imageRecorder.name = "SingleFrameRecorder";
+        imageRecorder.name = scene_name + "_" + currentFolderName;
         imageRecorder.Enabled = true;
         imageRecorder.CaptureAlpha = false;
         imageRecorder.RecordMode = RecordMode.SingleFrame;
         imageRecorder.OutputFormat = ImageRecorderSettings.ImageRecorderOutputFormat.PNG;
         imageRecorder.OutputFile = Path.Combine(database, scene_name) + "\\" + currentFolderName + "\\<Frame>";
-
         imageRecorder.imageInputSettings = new CameraInputSettings
         {
             Source = ImageSource.MainCamera,
             RecordTransparency = true,
             CaptureUI = false,
             FlipFinalOutput = false,
-            OutputWidth = Width,
-            OutputHeight = Height,
+            OutputWidth = ScreenSize.x,
+            OutputHeight = ScreenSize.y,
         };
-
-
-        controllerSettings.SetRecordModeToFrameInterval(frameStart, frameEnd);
+        controllerSettings.SetRecordModeToFrameInterval(frameStart, frameEnd + 2);
         controllerSettings.AddRecorderSettings(imageRecorder);
         controllerSettings.FrameRate = frameRate;
 
         RecorderOptions.VerboseMode = false;
         TestRecorderController.PrepareRecording();
         TestRecorderController.StartRecording();
-        Debug.Log("Record is started");
+
+
     }
 
-    void StopRecorder()
+    void End()
     {
-        TestRecorderController.StopRecording();
         if (!isSceneNormal)
         {
             File.WriteAllText(Path.Combine(database, scene_name) + "\\Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
