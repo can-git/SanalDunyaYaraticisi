@@ -21,22 +21,7 @@ public class CarDetails : MonoBehaviour
 
         return _jsonvehicle;
     }
-    //public List<JsonVehicleMotionDatas> getMotionDatas()
-    //{
-    //    List<JsonVehicleMotionDatas> motionVectorList = new List<JsonVehicleMotionDatas>();
-    //    var velocityList = GetComponentsInChildren<Velocity>();
-    //    for (int i = 0; i < velocityList.Length; i++)
-    //    {
-    //        if (velocityList[i].IsInView())
-    //        {
-    //            _jsonMotions = new JsonVehicleMotionDatas();
-    //            _jsonMotions.Vector = velocityList[i].getVelocity();
-    //            _jsonMotions.Position = new Vector2(Camera.main.WorldToScreenPoint(velocityList[i].transform.position).x, (Screen.height - Camera.main.WorldToScreenPoint(velocityList[i].transform.position).y));
-    //            motionVectorList.Add(_jsonMotions);
-    //        }
-    //    }
-    //    return motionVectorList;
-    //}
+
     public bool isInCamera()
     {
         MeshFilter filter = GetComponentInChildren<MeshFilter>();
@@ -48,8 +33,6 @@ public class CarDetails : MonoBehaviour
             check = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i]]));
             if (check.x > 1920 || check.x < 0 || check.y < 0 || check.y > 1080)
             {
-                //Debug.Log(this.name);
-                //Debug.Log(check);
                 durum = false;
             }
             else
@@ -142,16 +125,7 @@ public class CarDetails : MonoBehaviour
         screenPoint.y = (float)Screen.height - screenPoint.y;
         return screenPoint;
     }
-    //public Texture2D texture;
-    //void OnGUI()
-    //{
-    //    var borderSize = 2; // Border size in pixels
-    //    var style = new GUIStyle();
-    //    //Initialize RectOffset object
-    //    style.border = new RectOffset(borderSize, borderSize, borderSize, borderSize);
-    //    style.normal.background = texture;
-    //    GUI.Box(r, GUIContent.none, style);
-    //}
+
     public JsonVehicleBbox getBboxDetails()
     {
 
@@ -201,24 +175,6 @@ public class CarDetails : MonoBehaviour
         Vector2 screenPoint = Camera.main.WorldToScreenPoint(world);
         screenPoint.y = (float)Screen.height - screenPoint.y;
         return screenPoint;
-    }
-    float getCorrectList(float value, bool isX)
-    {
-        //if (isX)
-        //{
-        //    if (value <= 0)
-        //        value = 0;
-        //    if (value >= 1919)
-        //        value = 1919;
-        //}
-        //else
-        //{
-        //    if (value <= 0)
-        //        value = 0;
-        //    if (value >= 1079)
-        //        value = 1079;
-        //}
-        return value;
     }
 }
 

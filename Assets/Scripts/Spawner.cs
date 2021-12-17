@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
         newCar = Instantiate(car);
         newCar.transform.parent = this.gameObject.transform;
         newCar.transform.position = pathCreator.path.GetPoint(0);
-        newCar.GetComponent<CarAI>().setSpeed(speed);
+        //newCar.GetComponent<CarAI>().setSpeed(speed);
     }
     void createDestroyer()
     {

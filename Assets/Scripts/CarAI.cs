@@ -43,7 +43,7 @@ public class CarAI : MonoBehaviour
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravalled);
         }
     }
-   
+
     public void setSpeed(int speed)
     {
         this.speed = speed;

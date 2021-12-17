@@ -17,23 +17,20 @@ public class JsonThings : MonoBehaviour
     List<JsonVehicleDatas> list;
     List<JsonDatas> genelList;
     JsonDatas jsonData;
-    int num = 0;
     bool isLoaded = false;
-    public float waitForSeconds = 0;
+    //public int waitForFrame = 0;
     private RecorderControllerSettings controllerSettings;
     private RecorderController TestRecorderController;
-
+    int num = 0;
     [Header("Recording Config")]
     string scene_name;
-    public string database = "D://Dosyalar//Bi_alametler//Dataset//Recordings//Datasets";
+    public string database = "C:\\Users\\CAN\\Desktop\\Python Workspace\\HomographyT1001\\Datasets";
     public int frameRate = 30;
     public Vector2Int ScreenSize;
-    public int frameStart = 0;
-    public int frameEnd = 5;
+    public int recordStart = 0;
+    public int recordEnd = 10;
 
     public Camera camera;
-
-
 
     private void Awake()
     {
@@ -50,43 +47,39 @@ public class JsonThings : MonoBehaviour
             Destroy(GetComponent<ColorSetter>());
             currentFolderName = "Images";
         }
-        controllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();
-        TestRecorderController = new RecorderController(controllerSettings);
-
     }
     private void Start()
     {
         createFolders();
-        StartRecorder();
-        Debug.Log("Record Started.");
-        //isLoaded = true;
+        StartCoroutine(StartRecord());
     }
 
     private void Update()
     {
-        //if(isLoaded)
-        CallItEveryTime();
+        if (isLoaded)
+            CallItEveryTime();
     }
 
     private void CallItEveryTime()
     {
-        if (num >= frameStart && num < frameEnd - 1)
+        Debug.Log(Time.frameCount);
+        if (Time.frameCount >= recordStart && Time.frameCount <= recordEnd)
         {
             Process();
+            num++;
         }
-        else if (num == frameEnd)
+        else if (Time.frameCount > recordEnd)
         {
-            //Process();
+            Process();
             End();
         }
-        num++;
     }
 
     IEnumerator StartRecord()
     {
-        yield return new WaitForSeconds(waitForSeconds);
+        yield return new WaitUntil(() => Time.frameCount >= recordStart);
+        
         StartRecorder();
-        isLoaded = true;
     }
 
     public void Process()
@@ -109,9 +102,7 @@ public class JsonThings : MonoBehaviour
             if (item.isInCamera())
             {
                 list.Add(item.getCarDetails());
-                Debug.Log(num);
             }
-
         }
         return list;
     }
@@ -124,6 +115,9 @@ public class JsonThings : MonoBehaviour
 
     void StartRecorder()
     {
+        controllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();
+        TestRecorderController = new RecorderController(controllerSettings);
+        Debug.Log("Record Started.");
         var imageRecorder = ScriptableObject.CreateInstance<ImageRecorderSettings>();
         imageRecorder.name = scene_name + "_" + currentFolderName;
         imageRecorder.Enabled = true;
@@ -140,14 +134,14 @@ public class JsonThings : MonoBehaviour
             OutputWidth = ScreenSize.x,
             OutputHeight = ScreenSize.y,
         };
-        controllerSettings.SetRecordModeToFrameInterval(frameStart, frameEnd + 2);
+        controllerSettings.SetRecordModeToFrameInterval(recordStart, recordEnd);
         controllerSettings.AddRecorderSettings(imageRecorder);
         controllerSettings.FrameRate = frameRate;
 
         RecorderOptions.VerboseMode = false;
         TestRecorderController.PrepareRecording();
         TestRecorderController.StartRecording();
-
+        isLoaded = true;
 
     }
 
