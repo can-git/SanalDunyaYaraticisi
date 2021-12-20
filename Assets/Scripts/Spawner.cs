@@ -25,11 +25,12 @@ public class Spawner : MonoBehaviour
 
         foreach (CarInit car in cars)
         {  
-            yield return new WaitForSeconds(secondsBetweenSpawn);
             Spawn(car.car, car.speed);
+            yield return new WaitForSeconds(secondsBetweenSpawn);
         }
     }
-    
+
+
     void Spawn(GameObject car, int speed)
     {
         Vector3 spawnPosition = this.transform.position;

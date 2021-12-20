@@ -34,6 +34,8 @@ public class JsonThings : MonoBehaviour
 
     private void Awake()
     {
+        recordEnd = recordEnd + 3;
+        Application.targetFrameRate = 30;
         scene_name = SceneManager.GetActiveScene().name;
         if (!isSceneNormal)
         {
@@ -51,35 +53,30 @@ public class JsonThings : MonoBehaviour
     private void Start()
     {
         createFolders();
-        StartCoroutine(StartRecord());
+        StartRecorder();
+        num = recordStart;
+        //isLoaded = true;
+
     }
 
     private void Update()
     {
-        if (isLoaded)
-            CallItEveryTime();
+        //if (isLoaded)
+        CallItEveryTime();
     }
 
     private void CallItEveryTime()
     {
-        Debug.Log(Time.frameCount);
-        if (Time.frameCount >= recordStart && Time.frameCount <= recordEnd)
+        if (Time.frameCount >= recordStart + 4 && Time.frameCount <= recordEnd + 1)
         {
+            Debug.Log(num);
             Process();
             num++;
         }
-        else if (Time.frameCount > recordEnd)
+        else if (Time.frameCount > recordEnd + 1)
         {
-            Process();
             End();
         }
-    }
-
-    IEnumerator StartRecord()
-    {
-        yield return new WaitUntil(() => Time.frameCount >= recordStart);
-        
-        StartRecorder();
     }
 
     public void Process()
@@ -134,24 +131,25 @@ public class JsonThings : MonoBehaviour
             OutputWidth = ScreenSize.x,
             OutputHeight = ScreenSize.y,
         };
-        controllerSettings.SetRecordModeToFrameInterval(recordStart, recordEnd);
+        controllerSettings.SetRecordModeToFrameInterval(recordStart, recordEnd - 3);
         controllerSettings.AddRecorderSettings(imageRecorder);
         controllerSettings.FrameRate = frameRate;
 
         RecorderOptions.VerboseMode = false;
         TestRecorderController.PrepareRecording();
         TestRecorderController.StartRecording();
-        isLoaded = true;
+
 
     }
 
     void End()
     {
+        UnityEditor.EditorApplication.isPlaying = false;
         if (!isSceneNormal)
         {
             File.WriteAllText(Path.Combine(database, scene_name) + "\\Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
+            Debug.Log(Time.frameCount);
         }
-        UnityEditor.EditorApplication.isPlaying = false;
         Debug.Log("Finished");
         Application.Quit();
     }

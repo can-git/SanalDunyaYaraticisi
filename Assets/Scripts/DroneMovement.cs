@@ -11,7 +11,7 @@ public class DroneMovement : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 30;
+        
     }
 
     void Start()
