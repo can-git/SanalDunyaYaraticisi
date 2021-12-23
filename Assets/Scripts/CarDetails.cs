@@ -16,7 +16,7 @@ public class CarDetails : MonoBehaviour
         _jsonvehicle = new JsonVehicleDatas();
         _jsonvehicle.ID = gameObject.GetComponent<ChangeColor>().getColorID();
         _jsonvehicle.TYPE = gameObject.GetComponent<ChangeColor>().getTypeID();
-        _jsonvehicle.BboxDetails = getBboxDetails();
+        //_jsonvehicle.BboxDetails = getBboxDetails();
         _jsonvehicle.VectorDetails = getMotionTDatas();
 
         return _jsonvehicle;
@@ -183,7 +183,7 @@ public class JsonVehicleDatas
 {
     public int ID;
     public int TYPE;
-    public JsonVehicleBbox BboxDetails;
+    //public JsonVehicleBbox BboxDetails;
     public List<JsonVehicleMotionTDatas> VectorDetails;
 }
 

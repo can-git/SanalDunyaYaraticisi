@@ -8,10 +8,12 @@ public class DroneMovement : MonoBehaviour
     PathCreator pathCreator;
     public float speed = 5;
     float distanceTravalled;
+    public bool Move = true;
+    public bool Rotate = true;
 
     private void Awake()
     {
-        
+
     }
 
     void Start()
@@ -22,9 +24,11 @@ public class DroneMovement : MonoBehaviour
 
     private void Update()
     {
-        this.transform.GetChild(0).transform.Rotate(0, 0, .1f);
+        //this.transform.GetChild(0).transform.Rotate(0, 0, .1f);
         distanceTravalled += speed * Time.deltaTime;
+
         transform.position = pathCreator.path.GetPointAtDistance(distanceTravalled);
+
         transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravalled);
     }
 }

@@ -12,6 +12,7 @@ public class ColorSetter : MonoBehaviour
 
     public GameObject city;
     public Material material;
+    public Material treeMaterial;
 
     void Start()
     {
@@ -22,7 +23,10 @@ public class ColorSetter : MonoBehaviour
                 Material[] mats = new Material[rend.materials.Length];
                 for (int i = 0; i < rend.materials.Length; i++)
                 {
-                    mats[i] = material;
+                    if(rend.gameObject.CompareTag("Tree"))
+                        mats[i] = treeMaterial;
+                    else
+                        mats[i] = material;
                 }
                 rend.materials = mats;
             }

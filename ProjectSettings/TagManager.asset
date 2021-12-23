@@ -12,6 +12,12 @@ TagManager:
   - Lorry
   - AICars
   - Lights
+  - Stop
+  - Esquina
+  - Marcador
+  - Blocks
+  - IaCar
+  - Tree
   layers:
   - Default
   - TransparentFX
