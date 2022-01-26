@@ -23,7 +23,6 @@ public class LightsController : MonoBehaviour
     {
         if (currentTime <= 0.3 || 0.9f <= currentTime)
         {
-            Debug.Log(this.transform.GetComponentInChildren<Light>());
             foreach (Light item in this.transform.GetComponentsInChildren<Light>())
             {
                 item.enabled = true;

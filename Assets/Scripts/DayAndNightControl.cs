@@ -48,7 +48,8 @@ public class DayAndNightControl : MonoBehaviour
         starMat = StarDome.GetComponentInChildren<MeshRenderer>().material;
         if (StartDay)
         {
-            currentTime = .4f; //start at morning
+            currentTime = .5f; //start at morning
+            //currentTime = .4f; //start at morning
             starMat.color = new Color(1f, 1f, 1f, 0f);
         }
     }
@@ -56,13 +57,13 @@ public class DayAndNightControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateLight();
-        currentTime += (Time.deltaTime / SecondsInAFullDay) * timeMultiplier;
-        if (currentTime >= 1)
-        {
-            currentTime = 0;//once we hit "midnight"; any time after that sunrise will begin.
-            currentDay++; //make the day counter go up
-        }
+        //UpdateLight();
+        //currentTime += (Time.deltaTime / SecondsInAFullDay) * timeMultiplier;
+        //if (currentTime >= 1)
+        //{
+        //    currentTime = 0;//once we hit "midnight"; any time after that sunrise will begin.
+        //    currentDay++; //make the day counter go up
+        //}
     }
 
     public float getCurrentTime()
