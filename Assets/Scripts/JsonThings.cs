@@ -11,6 +11,8 @@ using System.Collections;
 
 public class JsonThings : MonoBehaviour
 {
+    private bool isWindows = true;
+
     public bool isSceneNormal = true;
     string currentFolderName;
 
