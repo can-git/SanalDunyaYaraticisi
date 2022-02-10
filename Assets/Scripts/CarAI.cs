@@ -19,6 +19,7 @@ public class CarAI : MonoBehaviour
 
     void Start()
     {
+        
         if (isNormal)
         {
             Destroy(GetComponent<CarDetails>());

@@ -11,6 +11,8 @@ using System.Collections;
 
 public class JsonThings : MonoBehaviour
 {
+    public bool isWindows = true;
+
     public bool isSceneNormal = true;
     string currentFolderName;
 
@@ -34,6 +36,14 @@ public class JsonThings : MonoBehaviour
 
     private void Awake()
     {
+        if (SystemInfo.operatingSystem.Contains("Windows"))
+        {
+            isWindows = true;
+        }
+        else
+        {
+            isWindows = false;
+        }
         recordEnd = recordEnd + 3;
         Application.targetFrameRate = 30;
         scene_name = SceneManager.GetActiveScene().name;
@@ -121,7 +131,10 @@ public class JsonThings : MonoBehaviour
         imageRecorder.CaptureAlpha = false;
         imageRecorder.RecordMode = RecordMode.SingleFrame;
         imageRecorder.OutputFormat = ImageRecorderSettings.ImageRecorderOutputFormat.PNG;
-        imageRecorder.OutputFile = Path.Combine(database, scene_name) + "\\" + currentFolderName + "\\<Frame>";
+        if (isWindows)
+            imageRecorder.OutputFile = Path.Combine(database, scene_name) + "\\" + currentFolderName + "\\<Frame>";
+        else
+            imageRecorder.OutputFile = Path.Combine(database, scene_name) + "/" + currentFolderName + "/<Frame>";
         imageRecorder.imageInputSettings = new CameraInputSettings
         {
             Source = ImageSource.MainCamera,
@@ -147,7 +160,10 @@ public class JsonThings : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         if (!isSceneNormal)
         {
-            File.WriteAllText(Path.Combine(database, scene_name) + "\\Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
+            if (isWindows)
+                File.WriteAllText(Path.Combine(database, scene_name) + "\\Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
+            else
+                File.WriteAllText(Path.Combine(database, scene_name) + @"/Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
             Debug.Log(Time.frameCount);
         }
         Debug.Log("Finished");
