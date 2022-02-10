@@ -27,6 +27,7 @@ public class JsonThings : MonoBehaviour
     [Header("Recording Config")]
     string scene_name;
     public string database = "C:\\Users\\CAN\\Desktop\\Python Workspace\\HomographyT1001\\Datasets";
+    private string triangleFileName = "";
     public int frameRate = 30;
     public Vector2Int ScreenSize;
     public int recordStart = 0;
@@ -38,10 +39,14 @@ public class JsonThings : MonoBehaviour
     {
         if (SystemInfo.operatingSystem.Contains("Windows"))
         {
+            triangleFileName = "\\Triangles";
+            database = "C:\\Users\\CAN\\Desktop\\Python Workspace\\HomographyT1001\\Datasets";
             isWindows = true;
         }
         else
         {
+            triangleFileName = @"/Triangles";
+            database = "/home/can/Desktop/UnityResources/HomographyT1001/Datasets";
             isWindows = false;
         }
         recordEnd = recordEnd + 3;
@@ -160,10 +165,7 @@ public class JsonThings : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         if (!isSceneNormal)
         {
-            if (isWindows)
-                File.WriteAllText(Path.Combine(database, scene_name) + "\\Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
-            else
-                File.WriteAllText(Path.Combine(database, scene_name) + @"/Triangles" + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
+            File.WriteAllText(Path.Combine(database, scene_name) + triangleFileName + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
             Debug.Log(Time.frameCount);
         }
         Debug.Log("Finished");
