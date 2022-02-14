@@ -122,6 +122,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &2384251851566823318
@@ -246,6 +247,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &2384251851880417362
@@ -259,7 +261,6 @@ GameObject:
   - component: {fileID: 2384251851880417363}
   - component: {fileID: 2384251851880417366}
   - component: {fileID: 2384251851880417365}
-  - component: {fileID: 2384251851880417364}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -332,19 +333,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2384251851880417364
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2384251851880417362}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.9926946, y: 1.2456787, z: 4.5292616}
-  m_Center: {x: -0.0024770796, y: 0.7560867, z: 0.017039299}
 --- !u!1 &2384251852068679381
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +423,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &2384251852289242265
@@ -636,6 +625,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &6852453292492990240
@@ -728,10 +718,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6852453292493486850}
-  - component: {fileID: 6852453292493087165}
-  - component: {fileID: 6852453292492990244}
-  - component: {fileID: 6852453292492990243}
   - component: {fileID: 6852453292492990245}
+  - component: {fileID: 6852453292492990243}
+  - component: {fileID: 6852453292492990244}
   m_Layer: 0
   m_Name: Car10
   m_TagString: Car
@@ -746,8 +735,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6852453292492990242}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -91.68001, y: 6.53, z: -190.81999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2384251851880417363}
@@ -755,64 +744,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6852453292493087165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6852453292492990242}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb8303a69ff0144bb6700b051abd284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  status: 0
-  BreakLight: {fileID: 0}
-  LightLeft: {fileID: 0}
-  LightRight: {fileID: 0}
-  mRayC1: {fileID: 0}
-  mRayC2: {fileID: 0}
-  wheel:
-  - {fileID: 6852453292493486856}
-  - {fileID: 6852453292493486858}
-  - {fileID: 6852453292493486854}
-  - {fileID: 6852453292493486848}
-  wCollider:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currentNode: 0
-  distanceToNode: 0
-  wheelsTransforms:
-    frontRight: {fileID: 6852453292493486856}
-    frontLeft: {fileID: 6852453292493486858}
-    backRight: {fileID: 6852453292493486854}
-    backLeft: {fileID: 6852453292493486848}
-    backRight2: {fileID: 0}
-    backLeft2: {fileID: 0}
-  atualWay: {fileID: 0}
-  sideAtual: 0
-  atualWayScript: {fileID: 0}
-  nodeSteerCarefully: 0
-  nodeSteerCarefully2: 0
-  myOldWay: {fileID: 0}
-  myOldSideAtual: 0
-  myOldWayScript: {fileID: 0}
-  player: {fileID: 0}
-  tSystem: {fileID: 0}
-  distanceToSelfDestroy: 0
-  carSetting:
-    carSteer: {fileID: 0}
-    springs: 25000
-    dampers: 1500
-    carPower: 120
-    brakePower: 8
-    limitSpeed: 30
-    maxSteerAngle: 35
-    curveAdjustment: 0
---- !u!114 &6852453292492990244
+--- !u!114 &6852453292492990245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -821,7 +753,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6852453292492990242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca2dcb51301c35747aafaf91c1f0b379, type: 3}
+  m_Script: {fileID: 11500000, guid: 89b216a9c66b3014386f0e97dd772489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6852453292492990243
@@ -838,8 +770,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carTypeID: 0
   colorID: 0
-  material: {fileID: 2100000, guid: 40119e6cade2c134d94211bdba4f5655, type: 2}
---- !u!114 &6852453292492990245
+  material: {fileID: 2100000, guid: e0711c631edef4146be11babfb99edec, type: 2}
+--- !u!114 &6852453292492990244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -848,7 +780,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6852453292492990242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b216a9c66b3014386f0e97dd772489, type: 3}
+  m_Script: {fileID: 11500000, guid: ca2dcb51301c35747aafaf91c1f0b379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6852453292492990246
