@@ -27,8 +27,9 @@ public class DroneMovement : MonoBehaviour
         //this.transform.GetChild(0).transform.Rotate(0, 0, .1f);
         distanceTravalled += speed * Time.deltaTime;
 
-        transform.position = pathCreator.path.GetPointAtDistance(distanceTravalled);
-
-        transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravalled);
+        if(Move)
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravalled);
+        if(Rotate)
+            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravalled);
     }
 }

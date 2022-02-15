@@ -20,6 +20,7 @@ public class DayAndNightControl : MonoBehaviour
     public DayColors dawnColors;
     public DayColors dayColors;
     public DayColors nightColors;
+    public bool lightsOpen = false;
     public int currentDay = 0; //day 8287... still stuck in this grass prison... no esacape... no freedom...
     public Light directionalLight; //the directional light in the scene we're going to work with
     public float SecondsInAFullDay = 120f; //in realtime, this is about two minutes by default. (every 1 minute/60 seconds is day in game)

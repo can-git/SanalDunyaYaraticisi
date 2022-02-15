@@ -6,16 +6,24 @@ public class LightsController : MonoBehaviour
 {
     float currentTime;
     DayAndNightControl dayController;
+    
 
-    void Start()
+    private void Awake()
     {
         dayController = FindObjectOfType<DayAndNightControl>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        currentTime = dayController.getCurrentTime();
+        if (dayController.lightsOpen)
+        {
+            currentTime = 1f;
+        }
+        else
+        {
+            currentTime = 0.5f;
+        }
+        //currentTime = dayController.getCurrentTime();
         UpdateEnvLights();
     }
 

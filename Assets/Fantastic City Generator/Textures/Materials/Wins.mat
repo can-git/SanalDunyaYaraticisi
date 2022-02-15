@@ -93,3 +93,4 @@ Material:
     - _ReflectColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0}
     - _SpecColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
     - _horizonColor: {r: 0.172, g: 0.463, b: 0.435, a: 0}
+  m_BuildTextureStacks: []

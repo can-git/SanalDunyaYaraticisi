@@ -19,14 +19,13 @@ public class JsonThings : MonoBehaviour
     List<JsonVehicleDatas> list;
     List<JsonDatas> genelList;
     JsonDatas jsonData;
-    bool isLoaded = false;
     //public int waitForFrame = 0;
     private RecorderControllerSettings controllerSettings;
     private RecorderController TestRecorderController;
     int num = 0;
     [Header("Recording Config")]
     string scene_name;
-    public string database = "C:\\Users\\CAN\\Desktop\\Python Workspace\\HomographyT1001\\Datasets";
+    private string database = "";
     private string triangleFileName = "";
     public int frameRate = 30;
     public Vector2Int ScreenSize;

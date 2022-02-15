@@ -42,14 +42,14 @@ public class ChangeColor : MonoBehaviour
             colorID = FindObjectOfType<ColorSetter>().newColorID(carType);
 
             color4Default = new Color32(0, (byte)carTypeID, (byte)colorID, 255);
-            color4Outline = new Color32(1, (byte)carTypeID, (byte)colorID, 255);
+            // color4Outline = new Color32(1, (byte)carTypeID, (byte)colorID, 255);
 
             foreach (var renderer in renderers)
             {
                 foreach (var item in renderer.materials)
                 {
                     item.SetColor("_Color", color4Default);
-                    item.SetColor("_OutlineColor", color4Outline);
+                    // item.SetColor("_OutlineColor", color4Outline);
                 }
             }
         }
