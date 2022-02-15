@@ -2823,9 +2823,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f729d5a05fe0e843b20f1632f18f00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 4
   Move: 0
-  Rotate: 0
+  Rotate: 1
 --- !u!1 &645670520
 GameObject:
   m_ObjectHideFlags: 0
@@ -5575,17 +5575,17 @@ MonoBehaviour:
   cars:
   - car: {fileID: 7026577687731489658, guid: 9c61a673f04961d42ae64be8e817f350, type: 3}
     speed: 18
-  - car: {fileID: 3320995047794655350, guid: b48f8da0460808c4e9bc0c76381156d8, type: 3}
+  - car: {fileID: 263851722179267086, guid: 280d6751427b9e943b3560c76cf88b1a, type: 3}
     speed: 17
   - car: {fileID: 263851722179267086, guid: 280d6751427b9e943b3560c76cf88b1a, type: 3}
     speed: 19
-  - car: {fileID: 8984371658043240910, guid: fbc6ecd286611a64a93c4f15112f51a0, type: 3}
+  - car: {fileID: 8115619877462736798, guid: 6ac25dcb8aa03834f881e43e25d725e2, type: 3}
     speed: 18
   - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
     speed: 17
   - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
     speed: 16
-  - car: {fileID: 3320995047794655350, guid: b48f8da0460808c4e9bc0c76381156d8, type: 3}
+  - car: {fileID: 3603016757093504697, guid: fc8b09426a6a21444b3f06e57ced3e99, type: 3}
     speed: 17
   secondsBetweenSpawn: 2
 --- !u!114 &1302441096
@@ -8901,20 +8901,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - car: {fileID: 2410324939931144757, guid: 5f2ead37523dbda49ace1434498df273, type: 3}
+  - car: {fileID: 8115619877462736798, guid: 6ac25dcb8aa03834f881e43e25d725e2, type: 3}
     speed: 18
-  - car: {fileID: 832289481811037720, guid: 7e07781beff4cfb4ab6ec60c4024daad, type: 3}
+  - car: {fileID: 4275743950616698428, guid: 61496a31c3bfbf744845d7b33049644a, type: 3}
     speed: 17
-  - car: {fileID: 1860466302487045428, guid: 92d04673c2d309a469e9fdd2a5eb8100, type: 3}
+  - car: {fileID: 6539381137620000793, guid: ae1d183144f997349af1694a8ca2be3d, type: 3}
     speed: 19
-  - car: {fileID: 5734644148836224053, guid: cea37f7ac852b044899a4bc267d3d21d, type: 3}
+  - car: {fileID: 1344608076080778950, guid: 45821029411ab0b4eb3c60b859c35d2f, type: 3}
     speed: 18
-  - car: {fileID: 8870192611279977936, guid: 0ef5b4c00c1fc2844a27c6f7b86cd570, type: 3}
-    speed: 17
-  - car: {fileID: 7026577687731489658, guid: 9c61a673f04961d42ae64be8e817f350, type: 3}
-    speed: 16
-  - car: {fileID: 3320995047794655350, guid: b48f8da0460808c4e9bc0c76381156d8, type: 3}
-    speed: 17
+  - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
+    speed: 15
+  - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
+    speed: 15
+  - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
+    speed: 15
   secondsBetweenSpawn: 2
 --- !u!114 &1916100197
 MonoBehaviour:
@@ -9517,13 +9517,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046112308}
-  m_LocalRotation: {x: 0.43713978, y: -0.6053152, z: 0.4442975, w: 0.49507788}
+  m_LocalRotation: {x: -0.022304239, y: -0.86035645, z: 0.5078004, w: -0.037789647}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 633548843}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 76.1, y: 241.4, z: 338.18}
+  m_LocalEulerAnglesHint: {x: 61.1, y: -185.03, z: 0}
 --- !u!1 &2056100676
 GameObject:
   m_ObjectHideFlags: 0
@@ -9917,7 +9917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087836495}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -178.9, y: 80, z: 96.53001}
+  m_LocalPosition: {x: -197, y: 65, z: 116.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 633548843}
@@ -9939,10 +9939,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: 23.048752, y: -6.183502, z: -48.793518}
-      - {x: 23.06469, y: -6.24592, z: -33.901054}
-      - {x: 23.096565, y: -6.370756, z: -4.116127}
-      - {x: 23.112503, y: -6.433174, z: 10.776337}
+      - {x: 22.528824, y: -5.259018, z: -56.11447}
+      - {x: 22.626385, y: -5.204295, z: -24.41086}
+      - {x: 22.821507, y: -5.0948496, z: 38.99636}
+      - {x: 22.919067, y: -5.040127, z: 70.699974}
       isClosed: 0
       space: 0
       controlMode: 3
