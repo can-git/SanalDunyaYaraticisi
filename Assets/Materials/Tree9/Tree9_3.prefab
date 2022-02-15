@@ -128,13 +128,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 0.3
+    - _Cutoff: 0.05
     - _ShadowOffsetScale: 1
-    - _ShadowStrength: 0.8
+    - _ShadowStrength: 1
     - _SquashAmount: 1
     - _TranslucencyViewDependency: 0.7
     m_Colors:
-    - _Color: {r: 0.62779975, g: 0.6415094, b: 0.6263795, a: 1}
+    - _Color: {r: 0.36271805, g: 0.3679245, b: 0.36271805, a: 1}
     - _TranslucencyColor: {r: 0.4416179, g: 0.8301887, b: 0.27020293, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
