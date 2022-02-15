@@ -215,129 +215,6 @@ Tree:
   m_GameObject: {fileID: 13766592}
   m_SpeedTreeWindAsset: {fileID: 0}
   m_TreeData: {fileID: 11451600, guid: 8b2d47fdc2e25ac4f9721480a68bbefa, type: 3}
---- !u!1 &17789154
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 17789155}
-  - component: {fileID: 17789157}
-  - component: {fileID: 17789156}
-  m_Layer: 0
-  m_Name: Path4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &17789155
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17789154}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -184.47656, y: 3.0999994, z: -133.47656}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1018453467}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &17789156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17789154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b09f66a392ec7f241b60b7c0cb1df6a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cars:
-  - car: {fileID: 2410324939931144757, guid: 5f2ead37523dbda49ace1434498df273, type: 3}
-    speed: 20
-  - car: {fileID: 3261716564732292291, guid: e69333953bc9d0d4e81429d5ecb4ab3c, type: 3}
-    speed: 21
-  - car: {fileID: 5734644148836224053, guid: cea37f7ac852b044899a4bc267d3d21d, type: 3}
-    speed: 19
-  - car: {fileID: 7026577687731489658, guid: 9c61a673f04961d42ae64be8e817f350, type: 3}
-    speed: 18
-  - car: {fileID: 263851722179267086, guid: 280d6751427b9e943b3560c76cf88b1a, type: 3}
-    speed: 17
-  - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
-    speed: 16
-  - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
-    speed: 16
-  secondsBetweenSpawn: 3
---- !u!114 &17789157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17789154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -31.671684, y: 1.4352547, z: 23.440935}
-      - {x: -39.314293, y: 1.3968979, z: 23.428698}
-      - {x: -87.96632, y: 0.67945546, z: 23.403769}
-      - {x: -94.48176, y: 0.6465967, z: 23.36947}
-      - {x: -145.58139, y: 0.38889065, z: 23.100473}
-      - {x: -204.99243, y: 0.098699965, z: 22.960257}
-      - {x: -264.81232, y: -0.0067353235, z: 22.761042}
-      - {x: -296.4088, y: -0.0624256, z: 22.655817}
-      - {x: -354.4767, y: 0, z: 22.457285}
-      - {x: -354.35202, y: 0, z: 22.444925}
-      - {x: -354.35202, y: 0, z: 22.444925}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: -221.3429, y: 0, z: 22.562801}
-        m_Extent: {x: 132.88019, y: 0, z: 0.13018417}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      globalNormalsAngle: 180
-      flipNormals: 1
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.6
-    vertexPathMinVertexSpacing: 0
-    showTransformTool: 1
-    showPathBounds: 1
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1.02
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 1
-    showNormalsInVertexMode: 1
-    showBezierPathInVertexMode: 1
-    showDisplayOptions: 1
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 1
-    showVertexPathOptions: 1
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!1 &24605114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,7 +2823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f729d5a05fe0e843b20f1632f18f00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0
   Move: 0
   Rotate: 0
 --- !u!1 &645670520
@@ -4408,16 +4285,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018453466}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21, y: 0.0000030994415, z: -28.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2087836496}
   - {fileID: 1916100195}
-  - {fileID: 17789155}
+  - {fileID: 1302441094}
   m_Father: {fileID: 2115996310}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1037681896
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,6 +5528,121 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1302441093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1302441094}
+  - component: {fileID: 1302441096}
+  - component: {fileID: 1302441095}
+  m_Layer: 0
+  m_Name: Path2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1302441094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302441093}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -108.7, y: -4.1799994, z: 101.799995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1018453467}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1302441095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302441093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09f66a392ec7f241b60b7c0cb1df6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cars:
+  - car: {fileID: 7026577687731489658, guid: 9c61a673f04961d42ae64be8e817f350, type: 3}
+    speed: 18
+  - car: {fileID: 3320995047794655350, guid: b48f8da0460808c4e9bc0c76381156d8, type: 3}
+    speed: 17
+  - car: {fileID: 263851722179267086, guid: 280d6751427b9e943b3560c76cf88b1a, type: 3}
+    speed: 19
+  - car: {fileID: 8984371658043240910, guid: fbc6ecd286611a64a93c4f15112f51a0, type: 3}
+    speed: 18
+  - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
+    speed: 17
+  - car: {fileID: 955298497188574681, guid: f87962a8386644a42a991f23b0bc9a76, type: 3}
+    speed: 16
+  - car: {fileID: 3320995047794655350, guid: b48f8da0460808c4e9bc0c76381156d8, type: 3}
+    speed: 17
+  secondsBetweenSpawn: 2
+--- !u!114 &1302441096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302441093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: 62.125763, y: 2.5734615, z: 247.75684}
+      - {x: 61.542618, y: 2.5365887, z: 106.87927}
+      - {x: 60.376328, y: 2.462843, z: -174.87589}
+      - {x: 59.793182, y: 2.42597, z: -315.75345}
+      - {x: 59.793182, y: 2.42597, z: -315.75345}
+      isClosed: 0
+      space: 0
+      controlMode: 3
+      autoControlLength: 0.47
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: -118.363625, y: 0, z: 12.101807}
+        m_Extent: {x: 112.989296, y: 0, z: 0.13659668}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      - 0
+      globalNormalsAngle: 270
+      flipNormals: 1
+    vertexPathUpToDate: 1
+    vertexPathMaxAngleError: 0.6
+    vertexPathMinVertexSpacing: 0
+    showTransformTool: 1
+    showPathBounds: 1
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 1.56
+    globalDisplaySettingsFoldout: 0
+    keepConstantHandleSize: 1
+    showNormalsInVertexMode: 1
+    showBezierPathInVertexMode: 1
+    showDisplayOptions: 1
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 1
+    showVertexPathOptions: 1
+    showNormals: 1
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
 --- !u!1 &1304206774
 GameObject:
   m_ObjectHideFlags: 0
@@ -8876,7 +8868,7 @@ GameObject:
   - component: {fileID: 1916100197}
   - component: {fileID: 1916100196}
   m_Layer: 0
-  m_Name: Path2
+  m_Name: Path1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8890,7 +8882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916100194}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.000013, y: 2.9899998, z: -110.69319}
+  m_LocalPosition: {x: -236, y: -3.62, z: 101.799995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1018453467}
@@ -8939,11 +8931,11 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: 61.320297, y: 0.24917692, z: 12.602307}
-      - {x: 64.53516, y: -56.16393, z: 15.303478}
-      - {x: 70.964874, y: -168.99014, z: 20.70582}
-      - {x: 74.17973, y: -225.40324, z: 23.406992}
-      - {x: 74.17973, y: -225.40324, z: 23.406992}
+      - {x: 60.175323, y: 1.8473845, z: 124.7452}
+      - {x: 60.079792, y: 1.9920309, z: 14.620544}
+      - {x: 59.88873, y: 2.2813237, z: -205.62875}
+      - {x: 59.793198, y: 2.42597, z: -315.75342}
+      - {x: 59.793198, y: 2.42597, z: -315.75342}
       isClosed: 0
       space: 0
       controlMode: 3
@@ -8966,7 +8958,7 @@ MonoBehaviour:
     showPerSegmentBounds: 0
     displayAnchorPoints: 1
     displayControlPoints: 1
-    bezierHandleScale: 1.56
+    bezierHandleScale: 0.72
     globalDisplaySettingsFoldout: 0
     keepConstantHandleSize: 1
     showNormalsInVertexMode: 1
@@ -9525,13 +9517,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046112308}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: -0.5}
+  m_LocalRotation: {x: 0.43713978, y: -0.6053152, z: 0.4442975, w: 0.49507788}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 633548843}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: -90}
+  m_LocalEulerAnglesHint: {x: 76.1, y: 241.4, z: 338.18}
 --- !u!1 &2056100676
 GameObject:
   m_ObjectHideFlags: 0
@@ -9924,14 +9916,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087836495}
-  m_LocalRotation: {x: 0.11059479, y: -0.9009182, z: -0.098449565, w: 0.4079497}
-  m_LocalPosition: {x: -47.90002, y: 60.9, z: -150.19232}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -178.9, y: 80, z: 96.53001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 633548843}
   m_Father: {fileID: 1018453467}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -5, y: -130.56, z: -16.3}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2087836497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9947,10 +9939,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -0.588526, y: 0.016291853, z: 3.3393939}
-      - {x: 5.4281683, y: 1.1843389, z: 10.1676445}
-      - {x: 17.461557, y: 3.520433, z: 23.824146}
-      - {x: 23.478252, y: 4.68848, z: 30.652397}
+      - {x: 23.048752, y: -6.183502, z: -48.793518}
+      - {x: 23.06469, y: -6.24592, z: -33.901054}
+      - {x: 23.096565, y: -6.370756, z: -4.116127}
+      - {x: 23.112503, y: -6.433174, z: 10.776337}
       isClosed: 0
       space: 0
       controlMode: 3
@@ -10035,7 +10027,7 @@ MonoBehaviour:
   frameRate: 30
   ScreenSize: {x: 1920, y: 1080}
   recordStart: 0
-  recordEnd: 450
+  recordEnd: 600
   camera: {fileID: 2046112309}
 --- !u!4 &2115996310
 Transform:
