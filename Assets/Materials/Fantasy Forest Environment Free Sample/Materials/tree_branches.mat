@@ -69,7 +69,7 @@ Material:
     - _BaseLight: 0.409
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0.52
+    - _Cutoff: 0.3
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -104,7 +104,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _OutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _Tint: {r: 0.9574403, g: 1, b: 0.9103774, a: 1}
+    - _Tint: {r: 0.9391725, g: 0.9622642, b: 0.6127626, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
     - _wind_dir: {r: 0.5, g: 0.05, b: 0.5, a: 0}
