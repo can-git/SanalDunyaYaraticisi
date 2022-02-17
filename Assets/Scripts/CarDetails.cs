@@ -146,26 +146,23 @@ public class CarDetails : MonoBehaviour
         List<JsonVehicleMotionTDatas> motionTList = new List<JsonVehicleMotionTDatas>();
         int num = 0;
 
-        if (isInCamera())
+        for (int i = 0; i < filter.sharedMesh.triangles.Length; i += 3)
         {
-            for (int i = 0; i < filter.sharedMesh.triangles.Length; i += 3)
-            {
-                JsonVehicleMotionTDatas motionTDatas = new JsonVehicleMotionTDatas();
-                JsonVehicleTDatas triangleDatas = new JsonVehicleTDatas();
+            JsonVehicleMotionTDatas motionTDatas = new JsonVehicleMotionTDatas();
+            JsonVehicleTDatas triangleDatas = new JsonVehicleTDatas();
 
-                motionTDatas.TriangleID = num;
-                num++;
+            motionTDatas.TriangleID = num;
+            num++;
 
-                triangleDatas.v0 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]]));
+            triangleDatas.v0 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]]));
 
-                triangleDatas.v1 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]]));
+            triangleDatas.v1 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]]));
 
-                triangleDatas.v2 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]]));
+            triangleDatas.v2 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]]));
 
-                motionTDatas.TriangleDetails = triangleDatas;
-                motionTList.Add(motionTDatas);
+            motionTDatas.TriangleDetails = triangleDatas;
+            motionTList.Add(motionTDatas);
 
-            }
         }
 
         return motionTList;

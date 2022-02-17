@@ -49,7 +49,7 @@ public class JsonThings : MonoBehaviour
             database = "/home/can/Desktop/UnityResources/HomographyT1001/Datasets";
             isWindows = false;
         }
-        recordEnd = recordEnd + 3;
+        recordEnd = recordEnd + 10;
         Application.targetFrameRate = 30;
         scene_name = SceneManager.GetActiveScene().name;
         if (!isSceneNormal)
