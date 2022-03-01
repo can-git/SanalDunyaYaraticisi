@@ -17,6 +17,6 @@ public class ScrollUVWater : MonoBehaviour
 	void Update () 
     {
         UVOffs += (AnimatRate * Time.deltaTime);
-        GetComponent<Renderer>().materials[0].SetTextureOffset("_MainTex", UVOffs);		
+        GetComponent<Renderer>().materials[0].SetTextureOffset("_horizonColor", UVOffs);		
 	}
 }

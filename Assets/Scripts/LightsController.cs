@@ -7,6 +7,14 @@ public class LightsController : MonoBehaviour
     float currentTime;
     DayAndNightControl dayController;
 
+    private void Awake()
+    {
+        if (dayController == null)
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+    }
+
     void Start()
     {
         dayController = FindObjectOfType<DayAndNightControl>();
