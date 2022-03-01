@@ -3,9 +3,15 @@ using UnityEngine;
 
 namespace UnityStandardAssets.Water
 {
-    [ExecuteInEditMode]
     public class WaterBasic : MonoBehaviour
     {
+        private void Start()
+        {
+            if (!GameObject.Find("Config").gameObject.GetComponent<JsonThings>().isSceneNormal)
+            {
+                GameObject.Destroy(this.gameObject);
+            }
+        }
         void Update()
         {
             Renderer r = GetComponent<Renderer>();

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ColorSetter : MonoBehaviour
@@ -12,10 +13,26 @@ public class ColorSetter : MonoBehaviour
 
     public GameObject city;
     public Material material;
+    public Material defaultMaterial;
     public Material treeMaterial;
+    public Material[] objects;
 
+    private Terrain terrain;
+    
     void Start()
     {
+        terrain = city.GetComponentInChildren<Terrain>();
+        if (city.GetComponentInChildren<Terrain>() != null)
+        {
+            foreach (Material item in objects)
+            {
+                item.color = material.color;
+            }
+
+            terrain.materialTemplate = material;
+        }
+        
+        
         foreach (Renderer rend in city.GetComponentsInChildren<Renderer>())
         {
             if (rend)
@@ -31,6 +48,14 @@ public class ColorSetter : MonoBehaviour
                 rend.materials = mats;
             }
         }
+    }
+    private void OnApplicationQuit()
+    {
+        foreach (Material item in objects)
+        {
+            item.color = defaultMaterial.color;
+        }
+
     }
 
     private void OnValidate()
