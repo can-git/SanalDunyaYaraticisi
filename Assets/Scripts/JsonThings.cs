@@ -19,7 +19,6 @@ public class JsonThings : MonoBehaviour
     List<JsonVehicleDatas> list;
     List<JsonDatas> genelList;
     JsonDatas jsonData;
-    bool isLoaded = false;
     //public int waitForFrame = 0;
     private RecorderControllerSettings controllerSettings;
     private RecorderController TestRecorderController;
