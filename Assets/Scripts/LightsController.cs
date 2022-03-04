@@ -6,6 +6,7 @@ public class LightsController : MonoBehaviour
 {
     float currentTime;
     DayAndNightControl dayController;
+    
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public class LightsController : MonoBehaviour
 
     void Update()
     {
-        if (RenderSettings.fog)
+        if (dayController.lightsOpen)
         {
             currentTime = 1f;
         }
