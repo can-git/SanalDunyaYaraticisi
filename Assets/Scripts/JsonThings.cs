@@ -76,7 +76,7 @@ public class JsonThings : MonoBehaviour
     private void Update()
     {
         //if (isLoaded)
-        //CallItEveryTime();
+        CallItEveryTime();
     }
 
     private void CallItEveryTime()
