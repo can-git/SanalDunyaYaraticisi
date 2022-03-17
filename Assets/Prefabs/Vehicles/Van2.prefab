@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018466683045623400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.00314188, z: -3.1499634}
+  m_LocalPosition: {x: 0.03, y: -0.00314188, z: -2.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7032315546605986261}
@@ -287,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672272082655214823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -0.098, z: 1.81}
+  m_LocalPosition: {x: 0.04, y: -0.098, z: -0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3021708457520569700}
@@ -306,7 +306,6 @@ GameObject:
   - component: {fileID: 3320995047794957392}
   - component: {fileID: 3320995047793630326}
   - component: {fileID: 3320995047792664246}
-  - component: {fileID: 2477912204722351097}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -323,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 3320995047794655344}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.032177344, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 3320995047794957404}
   - {fileID: 3320995047794957406}
@@ -381,19 +380,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2477912204722351097
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3320995047794655344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0164986, y: 1.1251811, z: 2.9736202}
-  m_Center: {x: -0.0028222844, y: 0.71306777, z: -0.00060176325}
 --- !u!1 &3320995047794655348
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +473,7 @@ GameObject:
   - component: {fileID: 2458122538033079821}
   - component: {fileID: 8565737217704729251}
   - component: {fileID: 1044401055641836918}
+  - component: {fileID: 3732774736911702639}
   m_Layer: 0
   m_Name: Van2
   m_TagString: Van
@@ -549,6 +536,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2dcb51301c35747aafaf91c1f0b379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3732774736911702639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3320995047794655350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3320995047794655354
 GameObject:
   m_ObjectHideFlags: 0

@@ -397,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6881828461102900395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.1, y: 0, z: -1.73}
+  m_LocalPosition: {x: 6.38, y: 0, z: -0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3627812239709979892}
@@ -769,7 +769,7 @@ Transform:
   m_GameObject: {fileID: 8115619877462736796}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 8115619877462762424}
   - {fileID: 8115619877462762426}
@@ -852,6 +852,7 @@ GameObject:
   - component: {fileID: 8203242731810840197}
   - component: {fileID: 9024047234189400109}
   - component: {fileID: 2991182402186912968}
+  - component: {fileID: 3031875973075485539}
   m_Layer: 0
   m_Name: Bus3
   m_TagString: Bus
@@ -914,6 +915,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2dcb51301c35747aafaf91c1f0b379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3031875973075485539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115619877462736798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8414080615131486394
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8414080615131486394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.109, y: 0.244, z: -2.71}
+  m_LocalPosition: {x: -6.109, y: 0.244, z: -4.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7520797956788597786}
