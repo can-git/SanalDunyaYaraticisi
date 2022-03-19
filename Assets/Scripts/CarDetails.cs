@@ -9,7 +9,16 @@ public class CarDetails : MonoBehaviour
     JsonVehicleDatas _jsonvehicle;
     JsonVehicleMotionDatas _jsonMotions;
     Rect r;
+    bool durum =false;
+    Vector2 screenPoint;
 
+    MeshFilter filter4IsInCamera;
+    MeshFilter filter4CarInCamera;
+    Vector2 check;
+
+    JsonVehicleMotionTDatas motionTDatas;
+    JsonVehicleTDatas triangleDatas;
+    List<JsonVehicleMotionTDatas> motionTList;
 
     public JsonVehicleDatas getCarDetails()
     {
@@ -24,13 +33,11 @@ public class CarDetails : MonoBehaviour
 
     public bool isInCamera()
     {
-        MeshFilter filter = GetComponentInChildren<MeshFilter>();
-        bool durum = false;
-        for (int i = 0; i < filter.sharedMesh.triangles.Length; i += 1)
+        filter4IsInCamera = GetComponentInChildren<MeshFilter>();
+        durum = false;
+        for (int i = 0; i < filter4IsInCamera.sharedMesh.triangles.Length; i += 30)
         {
-            Vector2 check;
-
-            check = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i]]));
+            check = World2ScreenPoint(filter4IsInCamera.transform.TransformPoint(filter4IsInCamera.sharedMesh.vertices[filter4IsInCamera.sharedMesh.triangles[i]]));
             if (check.x > 1920 || check.x < 0 || check.y < 0 || check.y > 1080)
             {
                 durum = false;
@@ -141,24 +148,24 @@ public class CarDetails : MonoBehaviour
 
     public List<JsonVehicleMotionTDatas> getMotionTDatas()
     {
-        MeshFilter filter = GetComponentInChildren<MeshFilter>();
+        filter4CarInCamera = GetComponentInChildren<MeshFilter>();
 
-        List<JsonVehicleMotionTDatas> motionTList = new List<JsonVehicleMotionTDatas>();
+        motionTList = new List<JsonVehicleMotionTDatas>();
         int num = 0;
 
-        for (int i = 0; i < filter.sharedMesh.triangles.Length; i += 3)
+        for (int i = 0; i < filter4CarInCamera.sharedMesh.triangles.Length; i += 3)
         {
-            JsonVehicleMotionTDatas motionTDatas = new JsonVehicleMotionTDatas();
-            JsonVehicleTDatas triangleDatas = new JsonVehicleTDatas();
+            motionTDatas = new JsonVehicleMotionTDatas();
+            triangleDatas = new JsonVehicleTDatas();
 
             motionTDatas.TriangleID = num;
             num++;
 
-            triangleDatas.v0 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]]));
+            triangleDatas.v0 = World2ScreenPoint(filter4CarInCamera.transform.TransformPoint(filter4CarInCamera.sharedMesh.vertices[filter4CarInCamera.sharedMesh.triangles[i + 0]]));
 
-            triangleDatas.v1 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]]));
+            triangleDatas.v1 = World2ScreenPoint(filter4CarInCamera.transform.TransformPoint(filter4CarInCamera.sharedMesh.vertices[filter4CarInCamera.sharedMesh.triangles[i + 1]]));
 
-            triangleDatas.v2 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]]));
+            triangleDatas.v2 = World2ScreenPoint(filter4CarInCamera.transform.TransformPoint(filter4CarInCamera.sharedMesh.vertices[filter4CarInCamera.sharedMesh.triangles[i + 2]]));
 
             motionTDatas.TriangleDetails = triangleDatas;
             motionTList.Add(motionTDatas);
@@ -169,7 +176,7 @@ public class CarDetails : MonoBehaviour
     }
     public Vector2 World2ScreenPoint(Vector3 world)
     {
-        Vector2 screenPoint = Camera.main.WorldToScreenPoint(world);
+        screenPoint = Camera.main.WorldToScreenPoint(world);
         screenPoint.y = (float)Screen.height - screenPoint.y;
         return screenPoint;
     }
