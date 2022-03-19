@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEditor;
+using System;
 
 public class CarDetails : MonoBehaviour
 {
     JsonVehicleDatas _jsonvehicle;
     JsonVehicleMotionDatas _jsonMotions;
     Rect r;
-    bool durum =false;
+    bool durum = false;
     Vector2 screenPoint;
 
     MeshFilter filter4IsInCamera;
-    MeshFilter filter4CarInCamera;
+    MeshFilter[] filter4CarInCamera;
     Vector2 check;
 
     JsonVehicleMotionTDatas motionTDatas;
     JsonVehicleTDatas triangleDatas;
     List<JsonVehicleMotionTDatas> motionTList;
+
+    Plane[] planes;
+    Collider objCollider;
 
     public JsonVehicleDatas getCarDetails()
     {
@@ -31,22 +35,44 @@ public class CarDetails : MonoBehaviour
         return _jsonvehicle;
     }
 
-    public bool isInCamera()
+    public bool isVisibleViaCollider(Camera c, GameObject item)
+    {
+        planes = GeometryUtility.CalculateFrustumPlanes(c);
+        objCollider = item.gameObject.GetComponent<Collider>();
+
+        if (GeometryUtility.TestPlanesAABB(planes, objCollider.bounds))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool isVisibleViaVertices()
     {
         filter4IsInCamera = GetComponentInChildren<MeshFilter>();
-        durum = false;
-        for (int i = 0; i < filter4IsInCamera.sharedMesh.triangles.Length; i += 30)
+        try
         {
-            check = World2ScreenPoint(filter4IsInCamera.transform.TransformPoint(filter4IsInCamera.sharedMesh.vertices[filter4IsInCamera.sharedMesh.triangles[i]]));
-            if (check.x > 1920 || check.x < 0 || check.y < 0 || check.y > 1080)
+            durum = false;
+            for (int i = 0; i < filter4IsInCamera.sharedMesh.triangles.Length; i += 30)
             {
-                durum = false;
+                check = World2ScreenPoint(filter4IsInCamera.transform.TransformPoint(filter4IsInCamera.sharedMesh.vertices[filter4IsInCamera.sharedMesh.triangles[i]]));
+                if (check.x > 1920 || check.x < 0 || check.y < 0 || check.y > 1080)
+                {
+                    durum = false;
+                }
+                else
+                {
+                    durum = true;
+                    break;
+                }
             }
-            else
-            {
-                durum = true;
-                break;
-            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error at "+ this.gameObject.name + ": " + e);
         }
         return durum;
     }
@@ -148,28 +174,31 @@ public class CarDetails : MonoBehaviour
 
     public List<JsonVehicleMotionTDatas> getMotionTDatas()
     {
-        filter4CarInCamera = GetComponentInChildren<MeshFilter>();
+        filter4CarInCamera = GetComponentsInChildren<MeshFilter>();
 
         motionTList = new List<JsonVehicleMotionTDatas>();
         int num = 0;
 
-        for (int i = 0; i < filter4CarInCamera.sharedMesh.triangles.Length; i += 3)
+        foreach (MeshFilter filter in filter4CarInCamera)
         {
-            motionTDatas = new JsonVehicleMotionTDatas();
-            triangleDatas = new JsonVehicleTDatas();
+            for (int i = 0; i < filter.sharedMesh.triangles.Length; i += 3)
+            {
+                motionTDatas = new JsonVehicleMotionTDatas();
+                triangleDatas = new JsonVehicleTDatas();
 
-            motionTDatas.TriangleID = num;
-            num++;
+                motionTDatas.TriangleID = num;
+                num++;
 
-            triangleDatas.v0 = World2ScreenPoint(filter4CarInCamera.transform.TransformPoint(filter4CarInCamera.sharedMesh.vertices[filter4CarInCamera.sharedMesh.triangles[i + 0]]));
+                triangleDatas.v0 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 0]]));
 
-            triangleDatas.v1 = World2ScreenPoint(filter4CarInCamera.transform.TransformPoint(filter4CarInCamera.sharedMesh.vertices[filter4CarInCamera.sharedMesh.triangles[i + 1]]));
+                triangleDatas.v1 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 1]]));
 
-            triangleDatas.v2 = World2ScreenPoint(filter4CarInCamera.transform.TransformPoint(filter4CarInCamera.sharedMesh.vertices[filter4CarInCamera.sharedMesh.triangles[i + 2]]));
+                triangleDatas.v2 = World2ScreenPoint(filter.transform.TransformPoint(filter.sharedMesh.vertices[filter.sharedMesh.triangles[i + 2]]));
 
-            motionTDatas.TriangleDetails = triangleDatas;
-            motionTList.Add(motionTDatas);
+                motionTDatas.TriangleDetails = triangleDatas;
+                motionTList.Add(motionTDatas);
 
+            }
         }
 
         return motionTList;

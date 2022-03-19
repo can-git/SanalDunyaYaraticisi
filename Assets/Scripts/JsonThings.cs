@@ -110,7 +110,7 @@ public class JsonThings : MonoBehaviour
         list = new List<JsonVehicleDatas>();
         foreach (var item in FindObjectsOfType<CarDetails>())
         {
-            if (item.isInCamera())
+            if (item.isVisibleViaCollider(camera, item.gameObject))
             {
                 list.Add(item.getCarDetails());
             }
