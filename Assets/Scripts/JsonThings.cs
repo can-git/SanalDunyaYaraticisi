@@ -170,7 +170,7 @@ public class JsonThings : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         if (!isSceneNormal)
         {
-            File.WriteAllText(Path.Combine(database, scene_name) + triangleFileName + ".json", JsonConvert.SerializeObject(jsonData.data, Formatting.Indented));
+            File.WriteAllText(Path.Combine(database, scene_name) + triangleFileName + ".json", JsonConvert.SerializeObject(jsonData.data, Formatting.None));
             Debug.Log(Time.frameCount);
         }
         Debug.Log("Finished");

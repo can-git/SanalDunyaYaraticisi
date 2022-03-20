@@ -231,8 +231,6 @@ public class CarDetails : MonoBehaviour
     {
         screenPoint = Camera.main.WorldToScreenPoint(world);
         screenPoint.y = (float)Screen.height - screenPoint.y;
-        Debug.Log(screenPoint.x);
-        Debug.Log(screenPoint.x.GetType());
         return screenPoint;
     }
 }
