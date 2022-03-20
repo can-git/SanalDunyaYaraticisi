@@ -17,8 +17,12 @@ public class JsonThings : MonoBehaviour
     string currentFolderName;
 
     List<JsonVehicleDatas> list;
-    List<JsonDatas> genelList;
-    JsonDatas jsonData;
+
+    //List<JsonDatas> genelList;
+    //JsonDatas jsonData;
+
+    JsonDictionary jsonData;
+
     //public int waitForFrame = 0;
     private RecorderControllerSettings controllerSettings;
     private RecorderController TestRecorderController;
@@ -56,7 +60,8 @@ public class JsonThings : MonoBehaviour
             Destroy(GameObject.Find("Day and Night Controller"));
             Destroy(GameObject.Find("Lights Controller"));
             currentFolderName = "Masks";
-            genelList = new List<JsonDatas>();
+            //genelList = new List<JsonDatas>();
+            jsonData = new JsonDictionary();
         }
         else
         {
@@ -97,11 +102,12 @@ public class JsonThings : MonoBehaviour
     {
         if (!isSceneNormal)
         {
-            jsonData = new JsonDatas();
-            jsonData.Frame = num;
-            //jsonData.CameraVector = gameObject.transform.GetComponent<Velocity>().getVelocity();
-            jsonData.Vehicles = getCarDatas();
-            genelList.Add(jsonData);
+            jsonData.data.Add(num, getCarDatas());
+            //jsonData = new JsonDatas();
+            //jsonData.Frame = num;
+            ////jsonData.CameraVector = gameObject.transform.GetComponent<Velocity>().getVelocity();
+            //jsonData.Vehicles = getCarDatas();
+            //genelList.Add(jsonData);
         }
     }
 
@@ -164,7 +170,7 @@ public class JsonThings : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         if (!isSceneNormal)
         {
-            File.WriteAllText(Path.Combine(database, scene_name) + triangleFileName + ".json", JsonConvert.SerializeObject(genelList, Formatting.Indented));
+            File.WriteAllText(Path.Combine(database, scene_name) + triangleFileName + ".json", JsonConvert.SerializeObject(jsonData.data, Formatting.Indented));
             Debug.Log(Time.frameCount);
         }
         Debug.Log("Finished");
@@ -172,10 +178,19 @@ public class JsonThings : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class JsonDatas
+//[System.Serializable]
+//public class JsonDatas
+//{
+//    public int Frame;
+//    //public Vector3 CameraVector;
+//    public List<JsonVehicleDatas> Vehicles;
+//}
+public class JsonDictionary
 {
-    public int Frame;
-    //public Vector3 CameraVector;
-    public List<JsonVehicleDatas> Vehicles;
+    public Dictionary<int, List<JsonVehicleDatas>> data;
+
+    public JsonDictionary()
+    {
+        data = new Dictionary<int, List<JsonVehicleDatas>>();
+    }
 }
