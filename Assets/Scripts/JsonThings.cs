@@ -12,6 +12,7 @@ using System.Collections;
 public class JsonThings : MonoBehaviour
 {
     private bool isWindows = true;
+    public bool isWriteable = true;
 
     public bool isSceneNormal = true;
     string currentFolderName;
@@ -52,7 +53,7 @@ public class JsonThings : MonoBehaviour
             database = "/home/can/Desktop/UnityResources/HomographyT1001/Datasets";
             isWindows = false;
         }
-        recordEnd = recordEnd + 3;
+        recordEnd = recordEnd + 4;
         Application.targetFrameRate = 30;
         scene_name = SceneManager.GetActiveScene().name;
         if (!isSceneNormal)
@@ -86,10 +87,11 @@ public class JsonThings : MonoBehaviour
 
     private void CallItEveryTime()
     {
-        if (Time.frameCount >= recordStart + 4 && Time.frameCount <= recordEnd + 1)
+        if (Time.frameCount >= recordStart + 3 && Time.frameCount <= recordEnd)
         {
             Debug.Log(num);
-            Process();
+            if(isWriteable)
+                Process();
             num++;
         }
         else if (Time.frameCount > recordEnd + 1)
@@ -168,10 +170,12 @@ public class JsonThings : MonoBehaviour
     void End()
     {
         UnityEditor.EditorApplication.isPlaying = false;
-        if (!isSceneNormal)
+        if(isWriteable){
+            if (!isSceneNormal)
         {
             File.WriteAllText(Path.Combine(database, scene_name) + triangleFileName + ".json", JsonConvert.SerializeObject(jsonData.data, Formatting.None));
             Debug.Log(Time.frameCount);
+        }
         }
         Debug.Log("Finished");
         Application.Quit();

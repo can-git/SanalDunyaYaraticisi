@@ -16246,11 +16246,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5f1db0798ea874fa6ffbac65d82df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSceneNormal: 1
+  isWriteable: 1
+  isSceneNormal: 0
   frameRate: 30
   ScreenSize: {x: 1920, y: 1080}
   recordStart: 0
-  recordEnd: 600
+  recordEnd: 250
   camera: {fileID: 2046112309}
 --- !u!4 &2115996310
 Transform:
