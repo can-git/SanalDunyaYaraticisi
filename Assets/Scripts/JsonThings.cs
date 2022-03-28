@@ -61,6 +61,7 @@ public class JsonThings : MonoBehaviour
             Destroy(GameObject.Find("Day and Night Controller"));
             Destroy(GameObject.Find("Lights Controller"));
             currentFolderName = "Masks";
+            RenderSettings.fog = false;
             //genelList = new List<JsonDatas>();
             jsonData = new JsonDictionary();
         }
