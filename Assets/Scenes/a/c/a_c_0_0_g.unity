@@ -26317,7 +26317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWriteable: 1
-  isSceneNormal: 1
+  isSceneNormal: 0
   frameRate: 30
   ScreenSize: {x: 1920, y: 1080}
   recordStart: 0
@@ -26911,8 +26911,8 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: 40.60559, y: -2.6718352, z: -93.97731}
-      - {x: 40.44097, y: -2.6718352, z: -111.026566}
+      - {x: 40.60559, y: -2.6718352, z: -48.664932}
+      - {x: 40.44097, y: -2.6718352, z: -65.71419}
       - {x: 41.510464, y: -2.5697062, z: -119.35747}
       - {x: 41.218506, y: -2.5697062, z: -149.59578}
       - {x: 42.623734, y: -2.4250376, z: -163.89555}

@@ -9501,7 +9501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cars:
   - car: {fileID: 7026577687731489658, guid: 9c61a673f04961d42ae64be8e817f350, type: 3}
-    speed: 15
+    speed: 16
   - car: {fileID: 1860466302487045428, guid: 92d04673c2d309a469e9fdd2a5eb8100, type: 3}
     speed: 18
   - car: {fileID: 5734644148836224053, guid: cea37f7ac852b044899a4bc267d3d21d, type: 3}
@@ -19710,8 +19710,8 @@ MonoBehaviour:
   isSceneNormal: 0
   frameRate: 30
   ScreenSize: {x: 1920, y: 1080}
-  recordStart: 0
-  recordEnd: 250
+  recordStart: 1000
+  recordEnd: 1200
   camera: {fileID: 2046112309}
 --- !u!4 &2115996310
 Transform:

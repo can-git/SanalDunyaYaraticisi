@@ -19710,8 +19710,8 @@ MonoBehaviour:
   isSceneNormal: 0
   frameRate: 30
   ScreenSize: {x: 1920, y: 1080}
-  recordStart: 0
-  recordEnd: 250
+  recordStart: 450
+  recordEnd: 550
   camera: {fileID: 2046112309}
 --- !u!4 &2115996310
 Transform:

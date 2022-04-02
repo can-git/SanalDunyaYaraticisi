@@ -88,9 +88,9 @@ public class JsonThings : MonoBehaviour
 
     private void CallItEveryTime()
     {
+        Debug.Log(Time.frameCount);
         if (Time.frameCount >= recordStart + 3 && Time.frameCount <= recordEnd)
         {
-            Debug.Log(num);
             if(isWriteable)
                 Process();
             num++;

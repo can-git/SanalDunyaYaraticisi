@@ -13,7 +13,7 @@ public class ColorSetter : MonoBehaviour
 
     public GameObject city;
     public Material material;
-    public Material defaultMaterial;
+    // public Material defaultMaterial;
     public Material treeMaterial;
     public Material[] objects;
 
@@ -49,14 +49,14 @@ public class ColorSetter : MonoBehaviour
             }
         }
     }
-    private void OnApplicationQuit()
-    {
-        foreach (Material item in objects)
-        {
-            item.color = defaultMaterial.color;
-        }
+    // private void OnApplicationQuit()
+    // {
+    //     foreach (Material item in objects)
+    //     {
+    //         item.color = defaultMaterial.color;
+    //     }
 
-    }
+    // }
 
     private void OnValidate()
     {
