@@ -6532,18 +6532,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cars:
   - car: {fileID: 4275743950616698428, guid: 61496a31c3bfbf744845d7b33049644a, type: 3}
-    speed: 21
+    speed: 12
   - car: {fileID: 5734644148836224053, guid: cea37f7ac852b044899a4bc267d3d21d, type: 3}
-    speed: 23
+    speed: 13
   - car: {fileID: 7819998752259280181, guid: 9d5d7cb961736104c82dbe21e1f3ef0d, type: 3}
-    speed: 24
+    speed: 14
   - car: {fileID: 742249941457696262, guid: 2d7319c7eba4cf24c88a53e62a615813, type: 3}
-    speed: 22
+    speed: 15
   - car: {fileID: 1832123567272736843, guid: 27903298c3a1dcb409cb982a30cbda10, type: 3}
-    speed: 23
+    speed: 15
   - car: {fileID: 8984371658043240910, guid: fbc6ecd286611a64a93c4f15112f51a0, type: 3}
-    speed: 25
-  secondsBetweenSpawn: 4
+    speed: 14
+  secondsBetweenSpawn: 5
 --- !u!114 &1042119403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8593,16 +8593,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cars:
   - car: {fileID: 2980943449207368154, guid: 8c7a900f457898c488c7411d6542214a, type: 3}
-    speed: 25
+    speed: 15
   - car: {fileID: 2659036143017433220, guid: 5d0f4ba3031eef64cb54571bc0c120e3, type: 3}
-    speed: 22
+    speed: 14
   - car: {fileID: 1832123567272736843, guid: 27903298c3a1dcb409cb982a30cbda10, type: 3}
-    speed: 26
+    speed: 16
   - car: {fileID: 342246629608046898, guid: 63486d432eb57c84cbb841c46b838d27, type: 3}
-    speed: 24
+    speed: 14
   - car: {fileID: 4646547349267227955, guid: c0e7c205d7748924d93cd728f3e73395, type: 3}
-    speed: 26
-  secondsBetweenSpawn: 4
+    speed: 16
+  - car: {fileID: 7819998752259280181, guid: 9d5d7cb961736104c82dbe21e1f3ef0d, type: 3}
+    speed: 13
+  secondsBetweenSpawn: 5
 --- !u!114 &1302441096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16229,7 +16231,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   city: {fileID: 2917545328071494289}
   material: {fileID: 2100000, guid: 40119e6cade2c134d94211bdba4f5655, type: 2}
-  defaultMaterial: {fileID: 2100000, guid: c4432cac15f78ca44bbaeea91febb042, type: 2}
   treeMaterial: {fileID: 2100000, guid: b85085c1f5c203947abc7574797e4770, type: 2}
   objects: []
 --- !u!114 &2115996309
@@ -16244,11 +16245,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5f1db0798ea874fa6ffbac65d82df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWriteable: 1
   isSceneNormal: 0
   frameRate: 30
   ScreenSize: {x: 1920, y: 1080}
-  recordStart: 300
-  recordEnd: 350
+  recordStart: 0
+  recordEnd: 250
   camera: {fileID: 2046112309}
 --- !u!4 &2115996310
 Transform:
