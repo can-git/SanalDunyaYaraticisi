@@ -73,7 +73,8 @@ public class JsonThings : MonoBehaviour
     }
     private void Start()
     {
-        createFolders();
+        if(isWriteable)
+            createFolders();
         StartRecorder();
         num = recordStart;
         //isLoaded = true;
@@ -97,6 +98,7 @@ public class JsonThings : MonoBehaviour
         }
         else if (Time.frameCount > recordEnd + 1)
         {
+            Debug.Log("Finished");
             End();
         }
     }
@@ -170,15 +172,16 @@ public class JsonThings : MonoBehaviour
 
     void End()
     {
+        
         UnityEditor.EditorApplication.isPlaying = false;
         if(isWriteable){
             if (!isSceneNormal)
-        {
-            File.WriteAllText(Path.Combine(database, scene_name) + triangleFileName + ".json", JsonConvert.SerializeObject(jsonData.data, Formatting.None));
-            Debug.Log(Time.frameCount);
+            {
+                Debug.Log("Waiting for json recording...");
+                File.WriteAllText(Path.Combine(database, scene_name) + triangleFileName + ".json", JsonConvert.SerializeObject(jsonData.data, Formatting.None));
+                Debug.Log(Time.frameCount);
+            }
         }
-        }
-        Debug.Log("Finished");
         Application.Quit();
     }
 }
