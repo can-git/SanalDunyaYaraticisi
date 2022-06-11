@@ -15653,11 +15653,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWriteable: 1
-  isSceneNormal: 0
+  isSceneNormal: 1
   frameRate: 30
   ScreenSize: {x: 1920, y: 1080}
   recordStart: 340
-  recordEnd: 380
+  recordEnd: 370
   camera: {fileID: 2046112309}
 --- !u!4 &2115996310
 Transform:
